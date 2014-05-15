@@ -13,7 +13,7 @@
       <Capability Name="ID_CAP_IDENTITY_USER" />
     </Capabilities>
     <Tasks>
-      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" ActivationPolicy="Resume" />
+      <DefaultTask Name="_default" NavigationPage="Views/SignInPage.xaml" ActivationPolicy="Resume" />
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="ApolloWPToken" TaskName="_default">
