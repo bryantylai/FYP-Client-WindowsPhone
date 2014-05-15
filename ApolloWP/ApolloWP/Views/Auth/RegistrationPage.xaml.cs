@@ -16,5 +16,15 @@ namespace ApolloWP.Views.Auth
         {
             InitializeComponent();
         }
+
+        private void backMainPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/mainPage.xaml", UriKind.Relative));
+        }
+
+        private void signUpHomePage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/mainPage.xaml", UriKind.Relative));
+        }
     }
 }

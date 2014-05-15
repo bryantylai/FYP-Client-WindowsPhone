@@ -14,7 +14,11 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/Login/loginPic2.jpg" />
+        </Grid.Background>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -22,13 +26,39 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Apollo" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Registration" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
+            <StackPanel>
+                <TextBlock Text="Email" Margin="12 0 0 0" />
+                <TextBox x:Name="EmailTextBox" />
+                <TextBlock Text="Username" Margin="12 0 0 0" />
+                <TextBox x:Name="UsernameTextBox" />
+                <TextBlock Text="Password" Margin="12 0 0 0" />
+                <PasswordBox x:Name="PasswordTextBox" />
+                <TextBlock Text="Phone Number (Optional)" Margin="12 0 0 0" />
+                <TextBox x:Name="PhoneTextBox" InputScope="TelephoneNumber" />
+            </StackPanel>
+
+            <!--<TextBlock Text="Username" Grid.Row="0" Margin="15 0 0 0" />
+            <TextBox x:Name="UsernameTextBox" Grid.Row="1" Background="WhiteSmoke" BorderBrush="WhiteSmoke" />
+            <TextBlock Text="Password" Grid.Row="2" Margin="15 0 0 0" />
+            <PasswordBox x:Name="PasswordTextBox" Grid.Row="3" Background="WhiteSmoke" BorderBrush="WhiteSmoke" />-->
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Grid.Row="4" Click="backMainPage" Width="150" Content="back" Background="RoyalBlue" BorderBrush="RoyalBlue" />
+                <Button Click="signUpHomePage" Width="150" Content="Sign In"  Background="RoyalBlue" BorderBrush="RoyalBlue" />
+            </StackPanel>
         </Grid>
     </Grid>
 
