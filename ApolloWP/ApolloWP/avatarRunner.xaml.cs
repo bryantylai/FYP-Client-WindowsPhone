@@ -15,6 +15,8 @@ namespace ApolloWP
         public avatarRunner()
         {
             InitializeComponent();
+
+            ApplicationBar = App.Current.Resources["GlobalAppBar"] as ApplicationBar;
         }
     }
 }

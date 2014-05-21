@@ -1,0 +1,130 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="ApolloWP.Views.userProfile.userProfile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/profile/background/profileBackground5.png" AlignmentX="Right" />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        -->
+        <!--ContentPanel - place additional content here-->
+        <!--
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+        </Grid>-->
+
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
+            </Grid.Background>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="10" BorderThickness="5" BorderBrush="White" Width="100" Height="100">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/assets/profile/userProfilePic/profilePic1.png"  />
+                    </Border.Background>
+                </Border>
+
+                <TextBlock Text="Dorothy Perkins" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 10" />
+                <TextBlock Text="Melbourne, Australia" HorizontalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.3" />
+            </Grid.Background>
+            <Grid>
+                <!--<Grid.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.3" />
+                </Grid.Background>-->
+
+                <Grid Margin="10">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.3" />
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="About Me" FontSize="25" />
+                            <TextBlock TextWrapping="Wrap" Text="I'm a person and stuff. Mostly People, sometimes stuff. Proud introvert. I make stuff people love to use." />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Recent Activities" Padding="15 0 0 5" FontSize="25" />
+                        <Line Grid.Row="1" Stroke="White" StrokeThickness="1" X1="0" X2="430" HorizontalAlignment="Center" />
+
+                        <StackPanel Grid.Row="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.4*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2.4*" />
+                                    <ColumnDefinition Width="2.4*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="80" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image Grid.Column="0" Grid.Row="0" Source="/Assets/avatarRunner/general_icon/running_avatar.png" Margin="16 0 0 0" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="Mar" HorizontalAlignment="Center" />
+                                    <TextBlock Text="5" HorizontalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="3.66" FontSize="24" VerticalAlignment="Center" TextAlignment="Center" />
+                                    <TextBlock Text="Distance (mi)" HorizontalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 10 0">
+                                    <TextBlock Text="00:34:14" FontSize="24" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock Text="Duration (mi)" HorizontalAlignment="Center" />
+                                </StackPanel>
+
+                                <Line Grid.ColumnSpan="4" Grid.Row="1" Opacity="0.5" Stroke="White" StrokeThickness="1" X1="0" X2="410" HorizontalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

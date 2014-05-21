@@ -10,8 +10,19 @@
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:ApolloWP" x:Key="LocalizedStrings"/>
         <System:Double x:Key="HeaderFontSize">40</System:Double>
-    </Application.Resources>
 
+        <shell:ApplicationBar x:Key="GlobalAppBar" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/appBar/home_white.png" Click="goHomepage" Text="Home" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/appBar/running_avatar.png" Click="goAvatarpage" Text="Avatar" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/appBar/medical.png" Click="goMedicalPage" Text="Doctor" />
+            <shell:ApplicationBarIconButton IconUri="/Assets/appBar/profileIcon2.png" Click="goUserProfilePage" Text="Profile" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarIconButton IconUri="/Assets/appBar/setting.png" Click="goSettingPage" Text="Setting" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+
+    </Application.Resources>
+    
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->
         <shell:PhoneApplicationService

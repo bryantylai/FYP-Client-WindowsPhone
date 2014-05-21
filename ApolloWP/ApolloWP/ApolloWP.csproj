@@ -100,6 +100,12 @@
     <Compile Include="Data\Form\AuthForm.cs" />
     <Compile Include="Data\Form\LoginForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />
+    <Compile Include="doctorPage.xaml.cs">
+      <DependentUpon>doctorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="homepage.xaml.cs">
+      <DependentUpon>homepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="mainPage.xaml.cs">
       <DependentUpon>mainPage.xaml</DependentUpon>
@@ -117,6 +123,15 @@
     <Compile Include="Views\Auth\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Setting\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Setting\setting.xaml.cs">
+      <DependentUpon>setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\userProfile\userProfile.xaml.cs">
+      <DependentUpon>userProfile.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -124,6 +139,14 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="avatarRunner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="doctorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="homepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +159,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Auth\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Setting\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Setting\setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\userProfile\userProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,33 +189,75 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\appBar\home_white.png" />
+    <Content Include="Assets\appBar\profileIcon2.png" />
+    <Content Include="Assets\appBar\setting.png" />
+    <Content Include="Assets\appBar\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\appBar\medical.png" />
+    <Content Include="Assets\appBar\running_avatar.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\avatarRunner\general_Icon\calories_icon.png" />
+    <Content Include="Assets\avatarRunner\general_Icon\distance_icon.png" />
+    <Content Include="Assets\avatarRunner\general_Icon\duration_icon.png" />
+    <Content Include="Assets\avatarRunner\general_Icon\running_avatar.png" />
+    <Content Include="Assets\avatarRunner\general_Icon\workout_icon.png" />
+    <Content Include="Assets\avatarRunner\runningBackground.png" />
+    <Content Include="Assets\avatarRunner\runningBackground2.png" />
+    <Content Include="Assets\avatarRunner\runningBackground3.png" />
     <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\doctorConsult\background\doctorConsult.png" />
+    <Content Include="Assets\doctorConsult\background\doctorConsultBackground.png" />
+    <Content Include="Assets\doctorConsult\background\doctorConsultBackground1.png" />
+    <Content Include="Assets\doctorConsult\background\doctorConsultBackgroundApollo.png" />
+    <Content Include="Assets\doctorConsult\doctorPic\doctorPic1.png" />
+    <Content Include="Assets\doctorConsult\general\call.png" />
+    <Content Include="Assets\doctorConsult\general\call2.png" />
+    <Content Include="Assets\doctorConsult\general\searchIcon.png" />
+    <Content Include="Assets\homepage\beach.png" />
+    <Content Include="Assets\homepage\beach2.png" />
+    <Content Include="Assets\homepage\beach3.png" />
+    <Content Include="Assets\homepage\general\bmiIcon.png" />
+    <Content Include="Assets\homepage\general\bmiIcon2.png" />
+    <Content Include="Assets\homepage\general\heightIcon.png" />
+    <Content Include="Assets\homepage\general\weightIcon.png" />
+    <Content Include="Assets\homepage\Homepage.png" />
+    <Content Include="Assets\homepage\Homepage2.png" />
     <Content Include="Assets\Login\apollologo.png" />
     <Content Include="Assets\Login\loginPic2.jpg" />
     <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\profile\background\profileBackground1.png" />
+    <Content Include="Assets\setting2.png" />
+    <Content Include="Assets\setting\settingBackground.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\SquareTile150x150.png" />
     <Content Include="Assets\SquareTile71x71.png" />
     <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\profile\userCoverPhoto\coverPhoto.png" />
+    <Content Include="Assets\profile\userCoverPhoto\coverPhoto2.png" />
+    <Content Include="Assets\profile\userProfilePic\profilePic1.png" />
     <Content Include="Assets\WideLogo.png" />
-    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+    <Content Include="Assets\appBar\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+    <Content Include="Assets\appBar\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+    <Content Include="Assets\appBar\Tiles\IconicTileMediumLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+    <Content Include="Assets\appBar\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Tiles\IconicTileSmall.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
@@ -189,7 +266,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\packages\Coding4Fun.Toolkit.Controls.2.0.7\lib\windowsphone8\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
