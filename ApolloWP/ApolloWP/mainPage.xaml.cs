@@ -19,12 +19,24 @@ namespace ApolloWP
 
         private void goToSignInPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/SignInPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/Auth/SignInPage.xaml", UriKind.Relative));
         }
 
         private void goToSignUpPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/RegistrationPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/Views/Auth/RegistrationPage.xaml", UriKind.Relative));
+            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+
+            while (this.NavigationService.CanGoBack)
+            {
+                this.NavigationService.RemoveBackEntry();
+            }
         }
     }
 }

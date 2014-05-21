@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using ApolloWP.Data.Item;
+using ApolloWP.Data.Form;
 
 namespace ApolloWP.Views.Auth
 {
@@ -24,7 +26,25 @@ namespace ApolloWP.Views.Auth
 
         private void signInHomePage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
+            RestClient client = new RestClient();
+            client.Post<LoginMessage>("https://apollo-ws.azurewebsites.net/api/auth/login", new LoginForm() { Username = UsernameTextBox.Text, Password = PasswordTextBox.Password }, (result) =>
+                {
+                    if (!result.IsError)
+                    {
+                        if (result.IsNewAccount)
+                        {
+                            this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.Relative));
+                        }
+                        else
+                        {
+                            this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(result.Message);
+                    }
+                });
         }
     }
 }

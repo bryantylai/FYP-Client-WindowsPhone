@@ -120,7 +120,7 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Column="0" Grid.Row="0" Source="/assets/userProfilePic/profilePic1.png" Width="70" HorizontalAlignment="Right" />
+                    <Image Grid.Column="0" Grid.Row="0" Source="/assets/profile/userProfilePic/profilePic1.png" Width="70" HorizontalAlignment="Right" />
                     <StackPanel Grid.Column="1" Grid.Row="0" Margin="10 0 0 0">
                         <TextBlock Text="Miao" FontSize="24" FontWeight="SemiBold" />
                         <TextBlock Text="miao has surpassed your level" />

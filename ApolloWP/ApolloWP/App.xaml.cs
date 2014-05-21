@@ -29,9 +29,6 @@ namespace ApolloWP
             // Standard XAML initialization
             InitializeComponent();
 
-            var appBar = App.Current.Resources["GlobalAppBar"] as ApplicationBar;
-            ((ApplicationBarIconButton)appBar.Buttons[0]).Text = AppResources.AppBarButtonText;
-
             // Phone-specific initialization
             InitializePhoneApplication();
 
@@ -232,31 +229,6 @@ namespace ApolloWP
 
                 throw;
             }
-        }
-
-        private void goHomepage(object sender, EventArgs e)
-        {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/homepage.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void goAvatarpage(object sender, EventArgs e)
-        {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/avatarRunner.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void goMedicalPage(object sender, EventArgs e)
-        {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/doctorPage.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void goSettingPage(object sender, EventArgs e)
-        {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void goUserProfilePage(object sender, EventArgs e)
-        {
-            (Application.Current.RootVisual as PhoneApplicationFrame).Navigate(new Uri("/Views/userProfile/userProfile.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

@@ -104,6 +104,7 @@
     <Compile Include="doctorPage.xaml.cs">
       <DependentUpon>doctorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalAppBar.cs" />
     <Compile Include="homepage.xaml.cs">
       <DependentUpon>homepage.xaml</DependentUpon>
     </Compile>
@@ -118,11 +119,15 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="RestClient.cs" />
+    <Compile Include="Data\Item\ServerMessage.cs" />
     <Compile Include="Views\Auth\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Auth\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Doctor\messagesForum.xaml.cs">
+      <DependentUpon>messagesForum.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Setting\setting.xaml.cs">
       <DependentUpon>setting.xaml</DependentUpon>
@@ -157,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Auth\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Doctor\messagesForum.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,13 +209,8 @@
     <Content Include="Assets\avatarRunner\general_Icon\running_avatar.png" />
     <Content Include="Assets\avatarRunner\general_Icon\workout_icon.png" />
     <Content Include="Assets\avatarRunner\runningBackground.png" />
-    <Content Include="Assets\avatarRunner\runningBackground2.png" />
-    <Content Include="Assets\avatarRunner\runningBackground3.png" />
     <Content Include="Assets\BadgeLogo.png" />
-    <Content Include="Assets\doctorConsult\background\doctorConsult.png" />
-    <Content Include="Assets\doctorConsult\background\doctorConsultBackground.png" />
-    <Content Include="Assets\doctorConsult\background\doctorConsultBackground1.png" />
-    <Content Include="Assets\doctorConsult\background\doctorConsultBackgroundApollo.png" />
+    <Content Include="Assets\doctorConsult\background\doctorBackground.png" />
     <Content Include="Assets\doctorConsult\doctorPic\doctorPic1.png" />
     <Content Include="Assets\doctorConsult\general\call.png" />
     <Content Include="Assets\doctorConsult\general\call2.png" />
@@ -218,8 +222,6 @@
     <Content Include="Assets\homepage\general\bmiIcon2.png" />
     <Content Include="Assets\homepage\general\heightIcon.png" />
     <Content Include="Assets\homepage\general\weightIcon.png" />
-    <Content Include="Assets\homepage\Homepage.png" />
-    <Content Include="Assets\homepage\Homepage2.png" />
     <Content Include="Assets\Login\apollologo.png" />
     <Content Include="Assets\Login\loginPic2.jpg" />
     <Content Include="Assets\Logo.png" />
@@ -269,9 +271,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\Item\" />
     <Folder Include="Views\Avatar\" />
-    <Folder Include="Views\Doctor\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

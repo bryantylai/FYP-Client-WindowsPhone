@@ -24,7 +24,7 @@
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/doctorConsult/background/doctorConsultBackground.png" />
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/doctorConsult/background/doctorBackground.png" />
         </Grid.Background>
 
         <phone:Panorama>

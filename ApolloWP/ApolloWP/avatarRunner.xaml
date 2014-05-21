@@ -15,7 +15,7 @@
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot">
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/avatarRunner/runningBackground3.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/avatarRunner/runningBackground.png"/>
         </Grid.Background>
 
         <phone:Panorama>
@@ -319,7 +319,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="1" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" />
-                                    <Image Grid.Column="1" Grid.RowSpan="2" Width="50" Height="50" Source="/Assets/userProfilePic/profilePic1.png" />
+                                    <Image Grid.Column="1" Grid.RowSpan="2" Width="50" Height="50" Source="/assets/profile/userProfilePic/profilePic1.png" />
                                     <TextBlock Grid.Column="2" Grid.Row="0" Text="Dana Bissett" FontSize="20" Padding="20 5 0 0" VerticalAlignment="Center" />
                                     <TextBlock Grid.Column="2" Grid.Row="1" Text="Level 25" FontSize="15" Padding="20 0 0 0" VerticalAlignment="Top" />
                                     <TextBlock Grid.Column="3" Grid.RowSpan="2" Text="2600pts" FontSize="20" Margin="0 0 15 0" TextAlignment="Right" VerticalAlignment="Center" />
