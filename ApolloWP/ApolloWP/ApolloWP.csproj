@@ -223,7 +223,7 @@
     <Content Include="Assets\Login\apollologo.png" />
     <Content Include="Assets\Login\loginPic2.jpg" />
     <Content Include="Assets\Logo.png" />
-    <Content Include="Assets\profile\background\profileBackground1.png" />
+    <Content Include="Assets\profile\background\profileBackground5.png" />
     <Content Include="Assets\setting2.png" />
     <Content Include="Assets\setting\settingBackground.png" />
     <Content Include="Assets\SplashScreen.png" />
@@ -250,6 +250,7 @@
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <Content Include="Assets\profile\background\profileBackground2.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
