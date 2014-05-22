@@ -29,6 +29,8 @@ namespace ApolloWP.Views.userProfile
             this.ApplicationBar.Buttons.Add(docButton);
             this.ApplicationBar.MenuItems.Add(settingButton);
             this.ApplicationBar.MenuItems.Add(signoutButton);
+
+            //FirstName.Text = GlobalData.User.FirstName;
         }
 
         void avatarButton_Click(object sender, EventArgs e)

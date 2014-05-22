@@ -20,15 +20,10 @@ namespace ApolloWP.Views.Auth
             InitializeComponent();
         }
 
-        private void backMainPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/mainPage.xaml", UriKind.Relative));
-        }
-
         private void signUpHomePage(object sender, RoutedEventArgs e)
         {
             RestClient client = new RestClient();
-            client.Post<ServerMessage>("https://apollo-ws.azurewebsites.net/api/auth/register", new RegistrationForm() { Username = UsernameTextBox.Text, Password = PasswordTextBox.Password }, (result) =>
+            client.Post<ServerMessage>("https://apollo-ws.azurewebsites.net/api/auth/register", new RegistrationForm() { Email = EmailTextBox.Text, Username = UsernameTextBox.Text, Password = PasswordTextBox.Password, Phone = PhoneTextBox.Text }, (result) =>
             {
                 if (!result.IsError)
                 {
@@ -42,8 +37,6 @@ namespace ApolloWP.Views.Auth
                     MessageBox.Show(result.Message);
                 }
             });
-
-            NavigationService.Navigate(new Uri("/mainPage.xaml", UriKind.Relative));
         }
     }
 }

@@ -100,11 +100,13 @@
     </Compile>
     <Compile Include="Data\Form\AuthForm.cs" />
     <Compile Include="Data\Form\LoginForm.cs" />
+    <Compile Include="Data\Form\ProfileForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />
     <Compile Include="doctorPage.xaml.cs">
       <DependentUpon>doctorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalAppBar.cs" />
+    <Compile Include="GlobalData.cs" />
     <Compile Include="homepage.xaml.cs">
       <DependentUpon>homepage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="Views\Auth\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Avatar\avatarMap.xaml.cs">
+      <DependentUpon>avatarMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\camera\camera.xaml.cs">
+      <DependentUpon>camera.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Doctor\messagesForum.xaml.cs">
       <DependentUpon>messagesForum.xaml</DependentUpon>
@@ -162,6 +170,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Auth\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Avatar\avatarMap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\camera\camera.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,6 +243,8 @@
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\profile\background\profileBackground5.png" />
     <Content Include="Assets\setting2.png" />
+    <Content Include="Assets\setting\general\camera_black.png" />
+    <Content Include="Assets\setting\general\camera_white.png" />
     <Content Include="Assets\setting\settingBackground.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\SquareTile150x150.png" />
@@ -270,9 +288,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Avatar\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

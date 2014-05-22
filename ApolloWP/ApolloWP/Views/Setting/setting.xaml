@@ -35,56 +35,87 @@
 			<ScrollViewer>
 				<StackPanel>
 					<TextBlock Text="First Name" />
-					<TextBox x:Name="firstName" />
+					<TextBox x:Name="FirstNameTextbox" />
 					<TextBlock Text="Last Name" />
-					<TextBox x:Name="lastName" />
-					<TextBlock Text="Date of Birth" />
+                    <TextBox x:Name="LastNameTextbox" />
+                    <TextBlock Text="Date of Birth" />
+                    <toolkit:DatePicker x:Name="dobDatePicker"/>
+
+                    <TextBlock Text="Gender" />
+                    <toolkit:ListPicker x:Name="GenderListPicker">
+                        <toolkit:ListPickerItem Content="Male" />
+                        <toolkit:ListPickerItem Content="Female" />
+                    </toolkit:ListPicker>
                     
-					<toolkit:DatePicker x:Name="dobPicker"/>
+                    <TextBlock Text="About Me" />
+                    <TextBox x:Name="AboutMeTextbox" Height="150" />
                     
-					<TextBlock Text="Gender" />
-					<TextBox x:Name="gender" />
 					<TextBlock Text="Phone Number" />
-					<TextBox x:Name="phoneNumber" />
+					<TextBox x:Name="PhoneNumberTextBox" />
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="140" />
+							<ColumnDefinition Width="300" />
 							<ColumnDefinition Width="*" />
 						</Grid.ColumnDefinitions>
 
-						<Image Grid.Column="0" Source="/assets/userProfilePic/profilePic1.png" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
 
-						<StackPanel Grid.Column="1" VerticalAlignment="Center">
-							<TextBlock Text="Cover Photo" />
-							<Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Cover Photo" />
+                        <Image Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
+
+                        <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+                            <Button Width="80" Click="gotoCamera">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/Assets/setting/general/camera_white.png" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
 						</StackPanel>
 					</Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Profile Photo" />
+                        <Image Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
+
+                        <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+                            <Button Width="80">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="/Assets/setting/general/camera_white.png" />
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
+                        </StackPanel>
+                    </Grid>
                     
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="140" />
-							<ColumnDefinition Width="*" />
-						</Grid.ColumnDefinitions>
-
-						<Image Grid.Column="0" Source="/assets/userProfilePic/profilePic1.png" />
-
-						<StackPanel Grid.Column="1" VerticalAlignment="Center">
-							<TextBlock Text="Profile Photo" />
-							<Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
-						</StackPanel>
-					</Grid>
-					<TextBlock Text="Weight" />
-					<TextBox x:Name="weight" />
+                    <TextBlock Text="Weight" />
+					<TextBox x:Name="WeightTextBox" />
 					<TextBlock Text="Height" />
-					<TextBox x:Name="height" />
+					<TextBox x:Name="HeightTextBox" />
                     
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*" />
 							<ColumnDefinition Width="*" />
 						</Grid.ColumnDefinitions>
-						<Button Grid.Column="0" Content="Cancel" Background="Orange" BorderThickness="0" />
-						<Button Grid.Column="1" Content="Update" Background="Orange" BorderThickness="0" />
+						<Button Grid.Column="0" Content="Cancel" Click="cancelSetting" Background="Orange" BorderThickness="0" />
+						<Button Grid.Column="1" Click="updateProfile" Content="Update" Background="Orange" BorderThickness="0" />
 					</Grid>
 				</StackPanel>
 			</ScrollViewer>

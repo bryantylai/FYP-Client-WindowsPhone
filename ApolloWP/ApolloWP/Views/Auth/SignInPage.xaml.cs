@@ -21,7 +21,7 @@ namespace ApolloWP.Views.Auth
 
         private void backMainPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/mainPage.xaml", UriKind.Relative));
+            NavigationService.GoBack();
         }
 
         private void signInHomePage(object sender, RoutedEventArgs e)
