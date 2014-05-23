@@ -51,7 +51,7 @@
                         <Image Width="120" Source="/Assets/homepage/general/bmiIcon2.png" />
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="BMI" FontSize="25" />
-                            <TextBlock Text="24.65" FontSize="45" />
+                            <TextBlock x:Name="BmiTotal" FontSize="45" />
                         </StackPanel>
                     </StackPanel>
 
@@ -72,7 +72,7 @@
 
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="Weight" FontSize="25" />
-                                    <TextBlock TextAlignment="Right" Text="1.56" FontSize="25" />
+                                    <TextBlock TextAlignment="Right" x:Name="Weight" FontSize="25" />
                                 </StackPanel>
                             </Grid>
 
@@ -86,7 +86,7 @@
 
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock Text="Height" FontSize="25" />
-                                    <TextBlock TextAlignment="Right" Text="60" FontSize="25" />
+                                    <TextBlock TextAlignment="Right" x:Name="Height" FontSize="25" />
                                 </StackPanel>
                             </Grid>
                         </Grid>

@@ -69,6 +69,7 @@ namespace ApolloWP
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            GlobalData.InitCredential();
             GlobalData.GetAppData();
         }
 
@@ -76,6 +77,7 @@ namespace ApolloWP
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            GlobalData.InitCredential();
             GlobalData.GetAppData();
         }
 

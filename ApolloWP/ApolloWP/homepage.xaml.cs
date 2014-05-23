@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using ApolloWP.Data;
 
 namespace ApolloWP
 {
@@ -14,6 +15,9 @@ namespace ApolloWP
     {
         public homepage()
         {
+            double HeightInCm;
+            double BmiTotalCalc;
+
             InitializeComponent();
 
             this.ApplicationBar = new ApplicationBar();
@@ -32,6 +36,14 @@ namespace ApolloWP
             this.ApplicationBar.Buttons.Add(profileButton);
             this.ApplicationBar.MenuItems.Add(settingButton);
             this.ApplicationBar.MenuItems.Add(signoutButton);
+
+            User user = GlobalData.GetUser();
+            Weight.Text = user.Weight.ToString();
+            Height.Text = user.Height.ToString();
+
+            HeightInCm = user.Height/100;
+            BmiTotalCalc = (user.Weight / (HeightInCm*HeightInCm));
+            BmiTotal.Text = Math.Round(BmiTotalCalc, 2).ToString();
         }
 
         void avatarButton_Click(object sender, EventArgs e)

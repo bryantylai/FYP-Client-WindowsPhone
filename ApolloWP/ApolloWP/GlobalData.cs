@@ -53,14 +53,14 @@ namespace ApolloWP
                     };
                 });
 
-            RestClient avatarClient = new RestClient();
-            avatarClient.Get<object>("https://apollo-ws.azurewebsites.net/api/avatar/profile", Credential, (result) =>
-                {
-                    new Avatar()
-                    {
+            //RestClient avatarClient = new RestClient();
+            //avatarClient.Get<object>("https://apollo-ws.azurewebsites.net/api/avatar/profile", Credential, (result) =>
+            //    {
+            //        new Avatar()
+            //        {
 
-                    };
-                });
+            //        };
+            //});
         }
     }
 }

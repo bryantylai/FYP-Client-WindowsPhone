@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using ApolloWP.Data;
 
 namespace ApolloWP.Views.userProfile
 {
@@ -30,7 +31,10 @@ namespace ApolloWP.Views.userProfile
             this.ApplicationBar.MenuItems.Add(settingButton);
             this.ApplicationBar.MenuItems.Add(signoutButton);
 
-            //FirstName.Text = GlobalData.User.FirstName;
+            User user = GlobalData.GetUser();
+            FirstName.Text = user.FirstName;
+            LastName.Text = user.LastName;
+            AboutMe.Text = user.AboutMe;
         }
 
         void avatarButton_Click(object sender, EventArgs e)

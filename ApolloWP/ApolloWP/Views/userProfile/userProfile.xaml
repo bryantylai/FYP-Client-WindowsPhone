@@ -50,10 +50,11 @@
                     </Border.Background>
                 </Border>
 
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="FirstName" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 10" />
-                    <TextBlock x:Name="LastNameTextbox" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 10" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock x:Name="FirstName" FontWeight="Bold" Margin="0 10 3 10" />
+                    <TextBlock x:Name="LastName" FontWeight="Bold" Margin="2 10 0 10" />
                 </StackPanel>
+
                 <TextBlock Text="Melbourne, Australia" HorizontalAlignment="Center" />
             </StackPanel>
         </Grid>
@@ -80,7 +81,7 @@
                     <Grid Grid.Row="0">
                         <StackPanel Margin="10">
                             <TextBlock Text="About Me" FontSize="25" />
-                            <TextBlock TextWrapping="Wrap" x:Name="AboutMeTextbox" />
+                            <TextBlock TextWrapping="Wrap" x:Name="AboutMe" />
                         </StackPanel>
                     </Grid>
 
