@@ -5,32 +5,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
+using Windows.Security.Credentials;
+using ApolloWP.Data;
 
 namespace ApolloWP
 {
     public class GlobalData
     {
-        public static User User;
+        private static PasswordCredential Credential;
+        private static User User;
+        private static Avatar Avatar;
+        public static PasswordCredential GetCredentials() { return Credential; }
+        public static User GetUser() { return User; }
+        public static Avatar GetAvatar() { return Avatar; }
 
-        public void displayGlobalData(NavigationEventArgs e)
+        public static void InitCredential()
         {
-            RestClient client = new RestClient();
-            client.Get<ProfileForm>("https://apollo-ws.azurewebsites.net/api/user/profile", "elsa", "elsaelsa", (result) =>
+            PasswordVault vault = new PasswordVault();
+            IEnumerable<PasswordCredential> credentials = vault.RetrieveAll();
+            if (credentials.Count() != 0)
             {
-                //User.FirstName = result.FirstName;
-                //User.LastNameTextbox = result.LastName;
-                ////dobDatePicker.Value.Value.Ticks = DateOfBirth,;
-                ////GenderListPicker.SelectedIndex == 0 ? "Male" : "Female" = Gender;
-                //AboutMeTextbox.Text = result.AboutMe == null ? "" : result.AboutMe;
-                //PhoneNumberTextBox.Text = result.Phone == null ? "" : result.Phone;
-                //WeightTextBox.Text = result.Weight.ToString() == null ? "" : result.Weight.ToString();
-                //HeightTextBox.Text = result.Height.ToString() == null ? "" : result.Height.ToString();
-            });
+                Credential = vault.RetrieveAll().First();
+                Credential.RetrievePassword();
+            }
+            else
+            {
+                Credential = null;
+            }            
         }
-    }
 
-    public class User
-    {
-        public string FirstName { get; set; }
+        public static void GetAppData()
+        {
+            RestClient profileClient = new RestClient();
+            profileClient.Get<ProfileForm>("https://apollo-ws.azurewebsites.net/api/user/profile", Credential, (result) =>
+                {
+                    User = new User()
+                    {
+                        Id = result.Id,
+                        FirstName = result.FirstName,
+                        LastName = result.LastName,
+                        Phone = result.Phone,
+                        AboutMe = result.AboutMe,
+                        Gender = result.Gender,
+                        Height = result.Height,
+                        Weight = result.Weight,
+                        DateOfBirth = new DateTime(result.DateOfBirth)
+                    };
+                });
+
+            RestClient avatarClient = new RestClient();
+            avatarClient.Get<object>("https://apollo-ws.azurewebsites.net/api/avatar/profile", Credential, (result) =>
+                {
+                    new Avatar()
+                    {
+
+                    };
+                });
+        }
     }
 }

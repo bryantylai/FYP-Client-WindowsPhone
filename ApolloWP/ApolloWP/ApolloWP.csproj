@@ -98,10 +98,12 @@
     <Compile Include="avatarRunner.xaml.cs">
       <DependentUpon>avatarRunner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Avatar.cs" />
     <Compile Include="Data\Form\AuthForm.cs" />
     <Compile Include="Data\Form\LoginForm.cs" />
     <Compile Include="Data\Form\ProfileForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="doctorPage.xaml.cs">
       <DependentUpon>doctorPage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +111,9 @@
     <Compile Include="GlobalData.cs" />
     <Compile Include="homepage.xaml.cs">
       <DependentUpon>homepage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="mainPage.xaml.cs">
@@ -158,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="homepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LandingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

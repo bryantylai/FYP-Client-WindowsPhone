@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Windows.Security.Credentials;
 
 namespace ApolloWP
 {
@@ -31,7 +32,6 @@ namespace ApolloWP
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
 
             while (this.NavigationService.CanGoBack)
             {

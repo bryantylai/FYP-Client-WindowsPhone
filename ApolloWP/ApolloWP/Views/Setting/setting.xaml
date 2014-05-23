@@ -107,9 +107,9 @@
                     <TextBlock Text="Weight" />
 					<TextBox x:Name="WeightTextBox" />
 					<TextBlock Text="Height" />
-					<TextBox x:Name="HeightTextBox" />
-                    
-					<Grid>
+                    <TextBox x:Name="HeightTextBox" />
+
+                    <Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*" />
 							<ColumnDefinition Width="*" />

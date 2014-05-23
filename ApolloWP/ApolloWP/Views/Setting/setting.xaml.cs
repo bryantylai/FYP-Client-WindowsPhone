@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using ApolloWP.Data.Item;
 using ApolloWP.Data.Form;
+using ApolloWP.Data;
 
 namespace ApolloWP.Views.Setting
 {
@@ -33,18 +34,15 @@ namespace ApolloWP.Views.Setting
         {
             base.OnNavigatedTo(e);
 
-            RestClient client = new RestClient();
-            client.Get<ProfileForm>("https://apollo-ws.azurewebsites.net/api/user/profile", "elsa", "elsaelsa", (result) =>
-                {
-                    FirstNameTextbox.Text = result.FirstName;
-                    LastNameTextbox.Text = result.LastName;
-                    //dobDatePicker.Value.Value.Ticks = DateOfBirth,;
-                    //GenderListPicker.SelectedIndex == 0 ? "Male" : "Female" = Gender;
-                    AboutMeTextbox.Text = result.AboutMe == null ? "" : result.AboutMe;
-                    PhoneNumberTextBox.Text = result.Phone == null ? "" : result.Phone;
-                    WeightTextBox.Text = result.Weight.ToString() == null ? "" : result.Weight.ToString();
-                    HeightTextBox.Text = result.Height.ToString() == null ? "" : result.Height.ToString();
-                });
+            User user = GlobalData.GetUser();
+            FirstNameTextbox.Text = user.FirstName;
+            LastNameTextbox.Text = user.LastName;
+            AboutMeTextbox.Text = user.AboutMe;
+            PhoneNumberTextBox.Text = user.Phone;
+            WeightTextBox.Text = user.Weight.ToString();
+            HeightTextBox.Text = user.Height.ToString();
+            GenderListPicker.SelectedIndex = (user.Gender == "Male") ? 0 : 1;
+            dobDatePicker.Value = user.DateOfBirth;
         }
 
         private void updateProfile(object sender, RoutedEventArgs e)
@@ -62,7 +60,7 @@ namespace ApolloWP.Views.Setting
                 Height = Double.Parse(HeightTextBox.Text)
             };
 
-            client.Post<ServerMessage>("https://apollo-ws.azurewebsites.net/api/user/windows/profile", form, "elsa", "elsaelsa", (result) =>
+            client.Post<ServerMessage>("https://apollo-ws.azurewebsites.net/api/user/windows/profile", form, GlobalData.GetCredentials(), (result) =>
                 {
                     if (!result.IsError)
                     {

@@ -63,5 +63,16 @@ namespace ApolloWP
 
             this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            RestClient client = new RestClient();
+            client.Get<object>("https://apollo-ws.azurewebsites.net/api/user/avatar/", GlobalData.GetCredentials(), (result) =>
+            {
+
+            });
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Windows.Security.Credentials;
 using Windows.Web.Http;
 using Windows.Web.Http.Headers;
 
@@ -38,12 +39,11 @@ namespace ApolloWP
         /// </summary>
         /// <typeparam name="T">The type of element</typeparam>
         /// <param name="url">The url of API to call</param>
-        /// <param name="username">The username required for Basic Authentication</param>
-        /// <param name="password">The password required for Basic Authentication</param>
+        /// <param name="credential">The credentials required for Basic Authentication</param>
         /// <param name="callback">A function to handle the HTTP Response</param>
-        public async void Get<T>(string url, string username, string password, Action<T> callback)
+        public async void Get<T>(string url, PasswordCredential credential, Action<T> callback)
         {
-            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Basic", Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(username + ":" + password)));
+            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Basic", Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(credential.UserName + ":" + credential.Password)));
             var result = await this.client.GetStringAsync(new Uri(url, UriKind.Absolute));
             callback(JsonConvert.DeserializeObject<T>(result));
         }
@@ -69,13 +69,12 @@ namespace ApolloWP
         /// <typeparam name="T">The type of element</typeparam>
         /// <param name="url">The url of API to call</param>
         /// <param name="obj">The object to be serialized into JSON</param>
-        /// <param name="username">The username required for Basic Authentication</param>
-        /// <param name="password">The password required for Basic Authentication</param>
+        /// <param name="credential">The credentials required for Basic Authentication</param>
         /// <param name="callback">A function to handle the HTTP Response</param>
-        public async void Post<T>(string url, object obj, string username, string password, Action<T> callback)
+        public async void Post<T>(string url, object obj, PasswordCredential credential, Action<T> callback)
         {
             HttpStringContent content = new HttpStringContent(JsonConvert.SerializeObject(obj), Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json");
-            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Basic", Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(username + ":" + password)));
+            client.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Basic", Convert.ToBase64String(UTF8Encoding.UTF8.GetBytes(credential.UserName + ":" + credential.Password)));
             HttpResponseMessage httpResponseMessage = await client.PostAsync(new Uri(url, UriKind.Absolute), content);
             string result = await httpResponseMessage.Content.ReadAsStringAsync();
             callback(JsonConvert.DeserializeObject<T>(result));

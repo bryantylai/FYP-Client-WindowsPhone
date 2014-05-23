@@ -69,12 +69,14 @@ namespace ApolloWP
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            GlobalData.GetAppData();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            GlobalData.GetAppData();
         }
 
         // Code to execute when the application is deactivated (sent to background)
