@@ -70,7 +70,6 @@ namespace ApolloWP
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             GlobalData.InitCredential();
-            GlobalData.GetAppData();
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -78,7 +77,6 @@ namespace ApolloWP
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             GlobalData.InitCredential();
-            GlobalData.GetAppData();
         }
 
         // Code to execute when the application is deactivated (sent to background)

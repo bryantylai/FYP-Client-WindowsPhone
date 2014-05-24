@@ -35,14 +35,17 @@ namespace ApolloWP.Views.Setting
             base.OnNavigatedTo(e);
 
             User user = GlobalData.GetUser();
-            FirstNameTextbox.Text = user.FirstName;
-            LastNameTextbox.Text = user.LastName;
-            AboutMeTextbox.Text = user.AboutMe;
-            PhoneNumberTextBox.Text = user.Phone;
-            WeightTextBox.Text = user.Weight.ToString();
-            HeightTextBox.Text = user.Height.ToString();
-            GenderListPicker.SelectedIndex = (user.Gender == "Male") ? 0 : 1;
-            dobDatePicker.Value = user.DateOfBirth;
+            if (user != null)
+            {
+                FirstNameTextbox.Text = user.FirstName;
+                LastNameTextbox.Text = user.LastName;
+                AboutMeTextbox.Text = user.AboutMe;
+                PhoneNumberTextBox.Text = user.Phone;
+                WeightTextBox.Text = user.Weight.ToString();
+                HeightTextBox.Text = user.Height.ToString();
+                GenderListPicker.SelectedIndex = (user.Gender == "Male") ? 0 : 1;
+                dobDatePicker.Value = user.DateOfBirth;
+            }
         }
 
         private void updateProfile(object sender, RoutedEventArgs e)

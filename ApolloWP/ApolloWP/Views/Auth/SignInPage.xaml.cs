@@ -31,7 +31,7 @@ namespace ApolloWP.Views.Auth
                 {
                     if (!result.IsError)
                     {
-                        if (result.IsNewAccount)
+                        if (result.NewAccount)
                         {
                             this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.Relative));
                         }

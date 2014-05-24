@@ -14,6 +14,6 @@ namespace ApolloWP.Data.Item
 
     public class LoginMessage : ServerMessage
     {
-        public bool IsNewAccount { get; set; }
+        public bool NewAccount { get; set; }
     }
 }

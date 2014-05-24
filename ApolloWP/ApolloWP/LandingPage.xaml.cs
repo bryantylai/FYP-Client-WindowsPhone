@@ -24,7 +24,6 @@ namespace ApolloWP
         {
             base.OnNavigatedTo(e);
 
-
             PasswordCredential credential = GlobalData.GetCredentials();
             if (credential != null)
             {
@@ -33,7 +32,15 @@ namespace ApolloWP
                 {
                     if (!result.IsError)
                     {
-                        this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
+                        if (result.NewAccount)
+                        {
+                            this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.Relative));
+                        }
+                        else
+                        {
+                            GlobalData.GetAppData();
+                            this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
+                        }
                     }
                     else
                     {
