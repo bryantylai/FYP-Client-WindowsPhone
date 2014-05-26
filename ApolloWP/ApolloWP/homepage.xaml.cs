@@ -15,9 +15,6 @@ namespace ApolloWP
     {
         public homepage()
         {
-            double HeightInCm;
-            double BmiTotalCalc;
-
             InitializeComponent();
 
             this.ApplicationBar = new ApplicationBar();
@@ -36,14 +33,6 @@ namespace ApolloWP
             this.ApplicationBar.Buttons.Add(profileButton);
             this.ApplicationBar.MenuItems.Add(settingButton);
             this.ApplicationBar.MenuItems.Add(signoutButton);
-
-            User user = GlobalData.GetUser();
-            Weight.Text = user.Weight.ToString();
-            Height.Text = user.Height.ToString();
-
-            HeightInCm = user.Height/100;
-            BmiTotalCalc = (user.Weight / (HeightInCm*HeightInCm));
-            BmiTotal.Text = Math.Round(BmiTotalCalc, 2).ToString();
         }
 
         void avatarButton_Click(object sender, EventArgs e)
@@ -75,10 +64,21 @@ namespace ApolloWP
         {
             base.OnNavigatedTo(e);
 
-
             while (this.NavigationService.CanGoBack)
             {
                 this.NavigationService.RemoveBackEntry();
+            }
+
+            GlobalData.GetAppData();
+            User user = GlobalData.GetUser();
+            if (user != null)
+            {
+                Weight.Text = user.Weight.ToString();
+                Height.Text = user.Height.ToString();
+
+                double HeightInCm = user.Height / 100;
+                double BmiTotalCalc = (user.Weight / (HeightInCm * HeightInCm));
+                BmiTotal.Text = Math.Round(BmiTotalCalc, 2).ToString();
             }
         }
     }

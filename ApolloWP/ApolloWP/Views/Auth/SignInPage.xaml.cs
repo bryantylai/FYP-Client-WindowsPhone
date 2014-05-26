@@ -26,11 +26,15 @@ namespace ApolloWP.Views.Auth
 
         private void signInHomePage(object sender, RoutedEventArgs e)
         {
+            string username = UsernameTextBox.Text;
+            string password = PasswordTextBox.Password;
             RestClient client = new RestClient();
-            client.Post<LoginMessage>("https://apollo-ws.azurewebsites.net/api/auth/login", new LoginForm() { Username = UsernameTextBox.Text, Password = PasswordTextBox.Password }, (result) =>
+            client.Post<LoginMessage>("https://apollo-ws.azurewebsites.net/api/auth/login", new LoginForm() { Username = username, Password = password }, (result) =>
                 {
                     if (!result.IsError)
                     {
+                        GlobalData.SaveCredential(username, password);
+
                         if (result.NewAccount)
                         {
                             this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.Relative));

@@ -34,6 +34,15 @@ namespace ApolloWP
             }            
         }
 
+        public static void SaveCredential(string username, string password)
+        {
+            PasswordVault vault = new PasswordVault();
+            IEnumerable<PasswordCredential> credentials = vault.RetrieveAll();
+            foreach (PasswordCredential credential in credentials) { vault.Remove(credential); }            
+            Credential = new PasswordCredential("Credentials", username, password);
+            vault.Add(Credential);
+        }
+
         public static void GetAppData()
         {
             RestClient profileClient = new RestClient();

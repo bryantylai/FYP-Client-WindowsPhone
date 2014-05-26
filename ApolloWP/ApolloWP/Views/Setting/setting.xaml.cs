@@ -67,6 +67,18 @@ namespace ApolloWP.Views.Setting
                 {
                     if (!result.IsError)
                     {
+                        User user = GlobalData.GetUser();
+                        if (user == null) { user = new User(); }
+
+                        user.FirstName = form.FirstName;
+                        user.LastName = form.LastName;
+                        user.DateOfBirth = new DateTime(form.DateOfBirth);
+                        user.Gender = form.Gender;
+                        user.AboutMe = form.AboutMe;
+                        user.Phone = form.AboutMe;
+                        user.Weight = form.Weight;
+                        user.Height = form.Height;
+
                         this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
                     }
                     else

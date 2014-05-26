@@ -67,17 +67,17 @@ namespace ApolloWP
         {
             base.OnNavigatedTo(e);
 
-            RestClient doctorClient = new RestClient();
-            doctorClient.Get<object>("https://apollo-ws.azurewebsites.net/api/user/doctor/fetch-all", GlobalData.GetCredentials(), (result) =>
-                {
+            //RestClient doctorClient = new RestClient();
+            //doctorClient.Get<object>("https://apollo-ws.azurewebsites.net/api/user/doctor/fetch-all", GlobalData.GetCredentials(), (result) =>
+            //    {
 
-                });
+            //    });
 
-            RestClient discussionClient = new RestClient();
-            discussionClient.Get<object>("https://apollo-ws.azurewebsites.net/api/user/doctor/discussion", GlobalData.GetCredentials(), (result) =>
-            {
+            //RestClient discussionClient = new RestClient();
+            //discussionClient.Get<object>("https://apollo-ws.azurewebsites.net/api/user/doctor/discussion", GlobalData.GetCredentials(), (result) =>
+            //{
 
-            });
+            //});
         }
     }
 }
