@@ -64,7 +64,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="Cover Photo" />
-                        <Image Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
+                        <Image x:Name="CoverImage" Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
 
                         <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
                             <Button Width="80" Click="gotoCamera">
@@ -74,7 +74,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
+                            <Button x:Name="CoverImageButton" Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" Click="CoverImageButton_Click" />
 						</StackPanel>
 					</Grid>
 
@@ -90,7 +90,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" Grid.Row="0" Text="Profile Photo" />
-                        <Image Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
+                        <Image x:Name="ProfileImage" Grid.Column="0" Grid.Row="1" Stretch="Fill" Source="/Assets/profile/userCoverPhoto/coverPhoto2.png" />
 
                         <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
                             <Button Width="80">
@@ -100,14 +100,14 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" />
+                            <Button x:Name="ProfileImageButton" Width="150" HorizontalAlignment="Left" Content="Upload" Background="Orange" BorderThickness="0" Click="ProfileImageButton_Click" />
                         </StackPanel>
                     </Grid>
                     
                     <TextBlock Text="Weight" />
-					<TextBox x:Name="WeightTextBox" />
+					<TextBox x:Name="WeightTextBox" InputScope="Number" />
 					<TextBlock Text="Height" />
-                    <TextBox x:Name="HeightTextBox" />
+                    <TextBox x:Name="HeightTextBox" InputScope="Number" />
 
                     <Grid>
 						<Grid.ColumnDefinitions>

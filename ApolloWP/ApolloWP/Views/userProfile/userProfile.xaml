@@ -40,7 +40,7 @@
 
         <Grid Grid.Row="0">
             <Grid.Background>
-                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding CoverImage}" />
+                <ImageBrush Stretch="Fill" ImageSource="{Binding CoverImage}" />
             </Grid.Background>
 
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

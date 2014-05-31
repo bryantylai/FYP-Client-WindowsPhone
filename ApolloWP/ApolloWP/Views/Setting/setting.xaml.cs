@@ -10,11 +10,19 @@ using Microsoft.Phone.Shell;
 using ApolloWP.Data.Item;
 using ApolloWP.Data.Form;
 using ApolloWP.Data;
+using Microsoft.Phone.Tasks;
+using System.IO;
+using Amazon.S3;
+using Amazon.S3.Model;
+using System.Windows.Media.Imaging;
 
 namespace ApolloWP.Views.Setting
 {
     public partial class setting : PhoneApplicationPage
     {
+        private string CoverImagePath;
+        private string ProfileImagePath;
+
         public setting()
         {
             InitializeComponent();
@@ -27,7 +35,7 @@ namespace ApolloWP.Views.Setting
 
         private void gotoCamera(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Views/camera/camera.xaml", UriKind.Relative));
+            //this.NavigationService.Navigate(new Uri("/Views/camera/camera.xaml", UriKind.Relative));
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -48,6 +56,7 @@ namespace ApolloWP.Views.Setting
             }
         }
 
+
         private void updateProfile(object sender, RoutedEventArgs e)
         {
             RestClient client = new RestClient();
@@ -61,8 +70,8 @@ namespace ApolloWP.Views.Setting
                 Phone = PhoneNumberTextBox.Text,
                 Weight = Double.Parse(WeightTextBox.Text),
                 Height = Double.Parse(HeightTextBox.Text),
-                ProfileImage = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/589a5bd4-bf46-439d-bff2-857ea6e804d8/profilepic.png?X-Amz-Date=20140531T040241Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=02be69ff52a0cdf190374d1f57204847337b47276259e7404f8cc23a51f8705e&X-Amz-Credential=ASIAJWVW4AZYZ5TO2UAQ/20140531/ap-southeast-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=AQoDYXdzEOX//////////wEawAJtt%2BFKLSak0HnAQew1VlC9Xivf3GOvlavFiHBT%2Bmir6X6vGWMoSV791qcMp63lz1ivbHwOtyE5Vdzmf7ali3DwBAJKBupJd7ILjXA0NJZz5jL3%2Bmhqf2cB2qY7%2BbV1AnaRTvoELHkx8ekdV9qWQT12VQtURVBhNEL6xvmnJXX57K%2BoRSdEF6kWJRkoPsJTC/qiAHFYOwlY2bfDc9rshqgF9qISAr6R4O9PcAOXTSll1u16nCFZs%2BHwgZnlTIVFS8cmIYkYqOJqC5MY4fYkA%2B3r/kb738uOlpg1Cvrf0kyir8LHrutm%2BIw4dv3sO0QhBC0rjxQzyvv4%2Bo0cmD9hJEDfNK06/6jlY8YVmpO1PseRZYbTbQpAgaHHKABxRMS99Cf8P/mNJWayMC03mmjbGT3XVZqeLyeeMtLr3fr47HrdZCDop6WcBQ%3D%3D",
-                CoverImage = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/589a5bd4-bf46-439d-bff2-857ea6e804d8/coverpic.png?X-Amz-Date=20140531T040143Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=a8100d14b91ad860942e701ea3b5bcc8f6dd47b9e998711b66f9505e4f5aabbb&X-Amz-Credential=ASIAJWVW4AZYZ5TO2UAQ/20140531/ap-southeast-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=AQoDYXdzEOX//////////wEawAJtt%2BFKLSak0HnAQew1VlC9Xivf3GOvlavFiHBT%2Bmir6X6vGWMoSV791qcMp63lz1ivbHwOtyE5Vdzmf7ali3DwBAJKBupJd7ILjXA0NJZz5jL3%2Bmhqf2cB2qY7%2BbV1AnaRTvoELHkx8ekdV9qWQT12VQtURVBhNEL6xvmnJXX57K%2BoRSdEF6kWJRkoPsJTC/qiAHFYOwlY2bfDc9rshqgF9qISAr6R4O9PcAOXTSll1u16nCFZs%2BHwgZnlTIVFS8cmIYkYqOJqC5MY4fYkA%2B3r/kb738uOlpg1Cvrf0kyir8LHrutm%2BIw4dv3sO0QhBC0rjxQzyvv4%2Bo0cmD9hJEDfNK06/6jlY8YVmpO1PseRZYbTbQpAgaHHKABxRMS99Cf8P/mNJWayMC03mmjbGT3XVZqeLyeeMtLr3fr47HrdZCDop6WcBQ%3D%3D"
+                ProfileImage = ProfileImagePath,
+                CoverImage = CoverImagePath
             };
 
             client.Post<ServerMessage>("https://apollo-ws.azurewebsites.net/api/user/windows/profile", form, GlobalData.GetCredentials(), (result) =>
@@ -88,6 +97,79 @@ namespace ApolloWP.Views.Setting
                         MessageBox.Show(result.Message);
                     }
                 });
+        }
+
+        private void ProfileImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            PhotoChooserTask task = new PhotoChooserTask();
+            task.ShowCamera = true;
+            task.Show();
+            task.Completed += ProfileImage_Completed;
+        }
+
+        async void ProfileImage_Completed(object sender, PhotoResult e)
+        {
+            if (e.TaskResult == TaskResult.OK)
+            {
+                if (e.TaskResult == TaskResult.OK)
+                {
+                    // Create a client
+                    AmazonS3Client client = new AmazonS3Client("AKIAJRY4MO4AOJJ6OJYQ", "JDJWGodttKrOGH8XUNbGIG1T7jCPBPbAA0obOMEa", Amazon.RegionEndpoint.APSoutheast1);
+
+                    // Create a PutObject request
+                    PutObjectRequest request = new PutObjectRequest
+                    {
+                        BucketName = "apollo-fyp",
+                        Key = GlobalData.GetUser().Id + "/" + "ProfileImage.png",
+                        ContentType = "image/png",
+                        CannedACL = S3CannedACL.PublicRead
+                    };
+                    ProfileImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "ProfileImage.png";
+                    BitmapImage img = new BitmapImage();
+                    img.SetSource(e.ChosenPhoto);
+                    ProfileImage.Source = img;
+
+                    request.InputStream = e.ChosenPhoto;
+
+                    // Put object
+                    PutObjectResponse response = await client.PutObjectAsync(request);
+                }
+            }
+        }
+
+        private void CoverImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            PhotoChooserTask task = new PhotoChooserTask();
+            task.ShowCamera = true;
+            task.Show();
+            task.Completed += CoverImage_Completed;
+        }
+
+        async void CoverImage_Completed(object sender, PhotoResult e)
+        {
+            if (e.TaskResult == TaskResult.OK)
+            {
+                // Create a client
+                AmazonS3Client client = new AmazonS3Client("AKIAJRY4MO4AOJJ6OJYQ", "JDJWGodttKrOGH8XUNbGIG1T7jCPBPbAA0obOMEa", Amazon.RegionEndpoint.APSoutheast1);
+
+                // Create a PutObject request
+                PutObjectRequest request = new PutObjectRequest
+                {
+                    BucketName = "apollo-fyp",
+                    Key = GlobalData.GetUser().Id + "/" + "CoverImage.png",
+                    ContentType = "image/png",
+                    CannedACL = S3CannedACL.PublicRead
+                };
+                CoverImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "CoverImage.png";
+                BitmapImage img = new BitmapImage();
+                img.SetSource(e.ChosenPhoto);
+                CoverImage.Source = img;
+
+                request.InputStream = e.ChosenPhoto;
+
+                // Put object
+                PutObjectResponse response = await client.PutObjectAsync(request);
+            }
         }
 
 
