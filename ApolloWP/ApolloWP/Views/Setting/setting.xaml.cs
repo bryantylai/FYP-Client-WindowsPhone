@@ -89,6 +89,8 @@ namespace ApolloWP.Views.Setting
                         user.Phone = form.AboutMe;
                         user.Weight = form.Weight;
                         user.Height = form.Height;
+                        user.CoverImage = form.CoverImage;
+                        user.ProfileImage = form.ProfileImage;
 
                         this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
                     }
@@ -114,7 +116,7 @@ namespace ApolloWP.Views.Setting
                 if (e.TaskResult == TaskResult.OK)
                 {
                     // Create a client
-                    AmazonS3Client client = new AmazonS3Client("AKIAJRY4MO4AOJJ6OJYQ", "JDJWGodttKrOGH8XUNbGIG1T7jCPBPbAA0obOMEa", Amazon.RegionEndpoint.APSoutheast1);
+                    AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
 
                     // Create a PutObject request
                     PutObjectRequest request = new PutObjectRequest
@@ -150,7 +152,7 @@ namespace ApolloWP.Views.Setting
             if (e.TaskResult == TaskResult.OK)
             {
                 // Create a client
-                AmazonS3Client client = new AmazonS3Client("AKIAJRY4MO4AOJJ6OJYQ", "JDJWGodttKrOGH8XUNbGIG1T7jCPBPbAA0obOMEa", Amazon.RegionEndpoint.APSoutheast1);
+                AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
 
                 // Create a PutObject request
                 PutObjectRequest request = new PutObjectRequest

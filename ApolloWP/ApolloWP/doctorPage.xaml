@@ -95,7 +95,7 @@
                 <phone:PanoramaItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Discussion" />
-                        <Button x:Name="AddButton" Content="Add" />
+                        <Button x:Name="AddButton" Content="Add" Click="AddButton_Click" />
                     </StackPanel>
                 </phone:PanoramaItem.Header>
                 <Grid>
