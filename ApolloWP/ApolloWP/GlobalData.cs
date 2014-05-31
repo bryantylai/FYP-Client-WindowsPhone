@@ -17,6 +17,7 @@ namespace ApolloWP
         private static Avatar Avatar;
         public static PasswordCredential GetCredentials() { return Credential; }
         public static User GetUser() { return User; }
+        public static void SetUser(User user) { User = user; }
         public static Avatar GetAvatar() { return Avatar; }
 
         public static void InitCredential()
@@ -58,18 +59,20 @@ namespace ApolloWP
                         Gender = result.Gender,
                         Height = result.Height,
                         Weight = result.Weight,
-                        DateOfBirth = new DateTime(result.DateOfBirth)
+                        DateOfBirth = new DateTime(result.DateOfBirth),
+                        ProfileImage = result.ProfileImage,
+                        CoverImage = result.CoverImage
                     };
                 });
 
-            //RestClient avatarClient = new RestClient();
-            //avatarClient.Get<object>("https://apollo-ws.azurewebsites.net/api/avatar/profile", Credential, (result) =>
-            //    {
-            //        new Avatar()
-            //        {
+            RestClient avatarClient = new RestClient();
+            avatarClient.Get<object>("https://apollo-ws.azurewebsites.net/api/avatar/profile", Credential, (result) =>
+                {
+                    Avatar = new Avatar()
+                    {
 
-            //        };
-            //});
+                    };
+                });
         }
     }
 }

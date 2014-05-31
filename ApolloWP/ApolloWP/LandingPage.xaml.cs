@@ -38,7 +38,6 @@ namespace ApolloWP
                         }
                         else
                         {
-                            GlobalData.GetAppData();
                             this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
                         }
                     }

@@ -17,5 +17,7 @@ namespace ApolloWP.Data
         public string Phone { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
+        public string ProfileImage { get; set; }
+        public string CoverImage { get; set; }
     }
 }

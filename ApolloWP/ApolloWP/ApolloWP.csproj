@@ -103,6 +103,8 @@
     <Compile Include="Data\Form\LoginForm.cs" />
     <Compile Include="Data\Form\ProfileForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />
+    <Compile Include="Data\Item\DiscussionItem.cs" />
+    <Compile Include="Data\Item\DoctorItem.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="doctorPage.xaml.cs">
       <DependentUpon>doctorPage.xaml</DependentUpon>

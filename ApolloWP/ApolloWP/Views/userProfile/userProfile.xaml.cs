@@ -69,5 +69,13 @@ namespace ApolloWP.Views.userProfile
 
             this.NavigationService.Navigate(new Uri("/homepage.xaml", UriKind.Relative));
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            User user = GlobalData.GetUser();
+            LayoutRoot.DataContext = user;
+        }
     }
 }

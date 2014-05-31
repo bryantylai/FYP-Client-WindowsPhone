@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using ApolloWP.Data;
+using ApolloWP.Data.Form;
 
 namespace ApolloWP
 {
@@ -69,17 +70,35 @@ namespace ApolloWP
                 this.NavigationService.RemoveBackEntry();
             }
 
-            GlobalData.GetAppData();
-            User user = GlobalData.GetUser();
-            if (user != null)
+            RestClient profileClient = new RestClient();
+            profileClient.Get<ProfileForm>("https://apollo-ws.azurewebsites.net/api/user/profile", GlobalData.GetCredentials(), (result) =>
             {
-                Weight.Text = user.Weight.ToString();
-                Height.Text = user.Height.ToString();
+                User user = new User()
+                {
+                    Id = result.Id,
+                    FirstName = result.FirstName,
+                    LastName = result.LastName,
+                    Phone = result.Phone,
+                    AboutMe = result.AboutMe,
+                    Gender = result.Gender,
+                    Height = result.Height,
+                    Weight = result.Weight,
+                    DateOfBirth = new DateTime(result.DateOfBirth),
+                    ProfileImage = result.ProfileImage,
+                    CoverImage = result.CoverImage
+                };
 
-                double HeightInCm = user.Height / 100;
-                double BmiTotalCalc = (user.Weight / (HeightInCm * HeightInCm));
-                BmiTotal.Text = Math.Round(BmiTotalCalc, 2).ToString();
-            }
+                GlobalData.SetUser(user);
+                if (user != null)
+                {
+                    Weight.Text = user.Weight.ToString();
+                    Height.Text = user.Height.ToString();
+
+                    double HeightInCm = user.Height / 100;
+                    double BmiTotalCalc = (user.Weight / (HeightInCm * HeightInCm));
+                    BmiTotal.Text = Math.Round(BmiTotalCalc, 2).ToString();
+                }
+            });
         }
     }
 }
