@@ -34,7 +34,7 @@ namespace ApolloWP
                     {
                         if (result.NewAccount)
                         {
-                            this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml", UriKind.Relative));
+                            this.NavigationService.Navigate(new Uri("/Views/Setting/setting.xaml?new=true", UriKind.Relative));
                         }
                         else
                         {

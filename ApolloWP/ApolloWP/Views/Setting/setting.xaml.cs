@@ -41,18 +41,22 @@ namespace ApolloWP.Views.Setting
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            User user = GlobalData.GetUser();
-            if (user != null)
+            
+            GlobalData.GetAppData();
+            if (!this.NavigationContext.QueryString.ContainsKey("new"))
             {
-                FirstNameTextbox.Text = user.FirstName;
-                LastNameTextbox.Text = user.LastName;
-                AboutMeTextbox.Text = user.AboutMe;
-                PhoneNumberTextBox.Text = user.Phone;
-                WeightTextBox.Text = user.Weight.ToString();
-                HeightTextBox.Text = user.Height.ToString();
-                GenderListPicker.SelectedIndex = (user.Gender == "Male") ? 0 : 1;
-                dobDatePicker.Value = user.DateOfBirth;
+                User user = GlobalData.GetUser();
+                if (user != null)
+                {
+                    FirstNameTextbox.Text = user.FirstName;
+                    LastNameTextbox.Text = user.LastName;
+                    AboutMeTextbox.Text = user.AboutMe;
+                    PhoneNumberTextBox.Text = user.Phone;
+                    WeightTextBox.Text = user.Weight.ToString();
+                    HeightTextBox.Text = user.Height.ToString();
+                    GenderListPicker.SelectedIndex = (user.Gender == "Male") ? 0 : 1;
+                    dobDatePicker.Value = user.DateOfBirth;
+                }
             }
         }
 

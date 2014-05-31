@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApolloWP.Data
+namespace ApolloWP.Data.Item
 {
-    public class Avatar
+    public class AvatarProfileItem
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
         public double Experience { get; set; }
-        public TimeSpan Duration { get; set; }
+        public long Duration { get; set; }
         public double Distance { get; set; }
     }
 }

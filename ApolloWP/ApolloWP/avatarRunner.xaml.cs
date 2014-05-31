@@ -5,6 +5,8 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ApolloWP.Data;
+using ApolloWP.Data.Item;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -68,11 +70,45 @@ namespace ApolloWP
         {
             base.OnNavigatedTo(e);
 
-            //RestClient client = new RestClient();
-            //client.Get<object>("https://apollo-ws.azurewebsites.net/api/user/avatar/profile", GlobalData.GetCredentials(), (result) =>
-            //{
+            RestClient avatarClient = new RestClient();
+            avatarClient.Get<AvatarProfileItem>("https://apollo-ws.azurewebsites.net/api/avatar/windows/profile", GlobalData.GetCredentials(), (result) =>
+            {
+                GlobalData.SetAvatar(new Avatar()
+                {
+                    Name = result.Name,
+                    Level = result.Level,
+                    Experience = result.Experience,
+                    Distance = result.Distance,
+                    Duration = new TimeSpan(result.Duration)
+                });
 
-            //});
+                AvatarProfilePanoramaItem.DataContext = GlobalData.GetAvatar();
+            });
+
+            RestClient historyClient = new RestClient();
+            historyClient.Get<AvatarHistoryItem>("https://apollo-ws.azurewebsites.net/api/avatar/windows/history", GlobalData.GetCredentials(), (result) =>
+            {
+                Dictionary<string, IEnumerable<RunItem>> History = new Dictionary<string, IEnumerable<RunItem>>();
+                History.Add("Day", result.Day);
+                History.Add("Week", result.Week);
+                History.Add("Month", result.Month);
+                History.Add("Year", result.Year);
+                GlobalData.SetHistory(History);
+                HistoryLeaderboard.ItemsSource = GlobalData.GetHistory("Day");
+            });
+
+            RestClient leaderboardClient = new RestClient();
+            leaderboardClient.Get<IEnumerable<LeaderboardItem>>("https://apollo-ws.azurewebsites.net/api/avatar/leaderboard", GlobalData.GetCredentials(), (result) =>
+            {
+                GlobalData.SetLeaderboard(result);
+                LeaderboardListBox.ItemsSource = GlobalData.GetLeaderboard();
+            });
+        }
+
+        private void TextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            TextBlock tappedTextBlock = e.OriginalSource as TextBlock;
+            HistoryLeaderboard.ItemsSource = GlobalData.GetHistory(tappedTextBlock.Text);
         }
     }
 }
