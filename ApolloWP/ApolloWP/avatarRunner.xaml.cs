@@ -110,5 +110,10 @@ namespace ApolloWP
             TextBlock tappedTextBlock = e.OriginalSource as TextBlock;
             HistoryLeaderboard.ItemsSource = GlobalData.GetHistory(tappedTextBlock.Text);
         }
+
+        private void AvatarRunnerMap(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/Views/Avatar/avatarMap.xaml", UriKind.Relative));
+        }
     }
 }

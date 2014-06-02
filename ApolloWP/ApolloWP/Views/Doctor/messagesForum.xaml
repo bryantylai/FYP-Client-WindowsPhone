@@ -31,23 +31,34 @@
         </StackPanel>-->
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="10,10,10,10">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.3" />
             </Grid.Background>
 
-            <StackPanel>
-                <TextBlock Text="Marc Boyer" FontSize="50" />
-                <Grid>
-                    <TextBlock Text="Title" FontSize="40" />
-                    <StackPanel HorizontalAlignment="Right">
-                        <TextBlock Text="Date" TextAlignment="Right" />
-                        <TextBlock Text="Time" TextAlignment="Right" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" Margin="20 10 20 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBox Text="Title (Tap Here for Edit)" FontSize="40" Margin="-15 0 -15 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" />
+                    <StackPanel Grid.Row="1" Margin="0 20 0 0">
+                        <TextBlock Text="Content" FontSize="30" />
                     </StackPanel>
                 </Grid>
-                
-            </StackPanel>
-            <TextBox Height="150" VerticalAlignment="Bottom" />
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <TextBox Width="300" Height="150" VerticalAlignment="Bottom" Margin="5 0 0 0" />
+                    <Button Width="150" Background="Orange" BorderBrush="Orange" Margin="0 -12 0 0" Content="Send" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 

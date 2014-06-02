@@ -25,33 +25,33 @@
 
             <!--Panorama item one-->
             <phone:PanoramaItem x:Name="AvatarProfilePanoramaItem" Header="Profile">
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="210" />
-                        <ColumnDefinition Width="210" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="150" />
-                        <RowDefinition Height="205" />
-                        <RowDefinition Height="205" />
-                    </Grid.RowDefinitions>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210" />
+                            <ColumnDefinition Width="210" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="180" />
+                            <RowDefinition Height="180" />
+                        </Grid.RowDefinitions>
 
-                    <Grid Grid.ColumnSpan="2" Grid.Row="0" Margin="0 0 0 10">
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black" Opacity="0.2" />
-                        </Grid.Background>
+                        <Grid Grid.ColumnSpan="2" Grid.Row="0" Margin="0 0 0 10">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.2" />
+                            </Grid.Background>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Assets/avatarRunner/general_icon/running_avatar.png" Margin="20 0 0 0" Width="100" HorizontalAlignment="left" VerticalAlignment="Center" />
-                            <StackPanel Margin="20 14 0 0">
-                                <TextBlock Text="Running" FontSize="35" />
-                                <TextBlock Text="Since" FontSize="22" />
-                                <TextBlock Text="2/16/2012" FontSize="22" />
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/avatarRunner/avatarImg.png" Margin="20 0 0 0" Width="150" Height="110" />
+                                <StackPanel Margin="20 0 0 0" VerticalAlignment="Center">
+                                    <TextBlock Text="Dave the" FontSize="35" />
+                                    <TextBlock Text="Runner" FontSize="35" />
+                                </StackPanel>
                             </StackPanel>
-                        </StackPanel>
-                    </Grid>
+                        </Grid>
 
-                    <!--<Grid Grid.Column="0" Grid.Row="1" Margin="0 0 10 10">
+                        <!--<Grid Grid.Column="0" Grid.Row="1" Margin="0 0 10 10">
                         <Grid.Background>
                             <SolidColorBrush Color="Black" Opacity="0.2" />
                         </Grid.Background>
@@ -63,18 +63,18 @@
                         </StackPanel>
                     </Grid>-->
 
-                    <Grid Grid.Column="0" Grid.Row="1" Margin="0 0 10 0">
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black" Opacity="0.2" />
-                        </Grid.Background>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="Duration" FontSize="30" HorizontalAlignment="Center" />
-                            <Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/duration_icon.png" Width="80" HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding Duration}" FontSize="35" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </Grid>
+                        <Grid Grid.Column="0" Grid.Row="1" Margin="0 0 10 10">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.2" />
+                            </Grid.Background>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Duration" FontSize="30" HorizontalAlignment="Center" />
+                                <Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/duration_icon.png" Width="70" HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding Duration}" FontSize="35" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
 
-                    <!--<Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 10">
+                        <!--<Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 10">
                         <Grid.Background>
                             <SolidColorBrush Color="Black" Opacity="0.2" />
                         </Grid.Background>
@@ -87,49 +87,51 @@
                         </StackPanel>
                     </Grid>-->
 
-                    <Grid Grid.Column="1" Grid.Row="1">
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black" Opacity="0.2" />
-                        </Grid.Background>
+                        <Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 10">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.2" />
+                            </Grid.Background>
 
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="Distance" FontSize="30" HorizontalAlignment="Center" />
-                            <Image Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/distance_icon.png" Width="90" HorizontalAlignment="Center" />
-                            <TextBlock FontSize="35" HorizontalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Distance" FontSize="30" HorizontalAlignment="Center" />
+                                <Image Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/distance_icon.png" Width="80" HorizontalAlignment="Center" />
+                                <TextBlock FontSize="35" HorizontalAlignment="Center">
                                 <Run Text="{Binding Distance}" />
                                 <Run Text="km" />
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
 
-                    <Grid Grid.Column="0" Grid.Row="2" Margin="0 0 10 0">
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black" Opacity="0.2" />
-                        </Grid.Background>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="Level" FontSize="30" HorizontalAlignment="Center" />
-                            <Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/duration_icon.png" Width="80" HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding Level}" FontSize="35" HorizontalAlignment="Center" />
-                        </StackPanel>
-                    </Grid>
+                        <Grid Grid.Column="0" Grid.Row="2" Margin="0 0 10 0">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.2" />
+                            </Grid.Background>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Level" FontSize="30" HorizontalAlignment="Center" />
+                                <Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/running_avatar.png" Width="80" HorizontalAlignment="Center" />
+                                <TextBlock Text="{Binding Level}" FontSize="35" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
 
-                    <Grid Grid.Column="1" Grid.Row="2" Margin="0 0 10 0">
-                        <Grid.Background>
-                            <SolidColorBrush Color="Black" Opacity="0.2" />
-                        </Grid.Background>
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="Experience" FontSize="30" HorizontalAlignment="Center" />
-                            <Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/duration_icon.png" Width="80" HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding Experience}" FontSize="35" HorizontalAlignment="Center" />
-                        </StackPanel>
+                        <Grid Grid.Column="1" Grid.Row="2" Margin="0 0 0 0">
+                            <Grid.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.2" />
+                            </Grid.Background>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="Experience" FontSize="30" HorizontalAlignment="Center" />
+                                <TextBlock Margin="0 10 0 10" Text="EXP" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" />
+                                <!--<Image Grid.Column="0" Margin="0 10 0 10" Source="/Assets/avatarRunner/general_icon/duration_icon.png" Width="80" HorizontalAlignment="Center" />-->
+                                <TextBlock Text="{Binding Experience}" FontSize="35" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
-
+                    <Button Click="AvatarRunnerMap" Content="Start Running" BorderThickness="0" Height="80" Background="Orange" />
+                </StackPanel>
             </phone:PanoramaItem>
 
             <!--Panorama item two-->
-            <!--
-            <phone:PanoramaItem Header="Goals">
+
+            <!--<phone:PanoramaItem Header="Running">
                 <Grid>
                     <Grid.Background>
                         <SolidColorBrush Color="Black" Opacity="0.2" />
@@ -139,40 +141,17 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" >
-                        
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                        <Image Stretch="Fill" Margin="20 10 10 10" Source="/Assets/avatarRunner/avatarImg.png" Width="150" Height="150" VerticalAlignment="Center" />
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Dave the" Margin="10 10 0 0" FontSize="35" />
+                            <TextBlock Text="Runner" Margin="10 0 0 0" FontSize="35" />
+                        </StackPanel>
                     </StackPanel>
 
                     <Grid Grid.Row="1">
                         <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 50">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Image Grid.Column="0" Source="/Assets/avatarRunner/general_icon/workout_icon.png" Width="60" />
-                                <TextBlock Grid.Column="1" Text="Kilometer" />
-                                <TextBlock />
-                            </Grid>
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Image Grid.Column="0" Source="/Assets/avatarRunner/general_icon/workout_icon.png" Width="60" />
-                                <TextBlock Grid.Column="1" Text="Kilometer" />
-                                <TextBlock />
-                            </Grid>
-                            <Button Content="Start Running" BorderThickness="0" Background="Orange" />
+                            <Button Content="Start Running" BorderThickness="0" Height="120" Background="Orange" />
                         </StackPanel>
                     </Grid>
                 </Grid>

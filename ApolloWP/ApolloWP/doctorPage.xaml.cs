@@ -126,7 +126,7 @@ namespace ApolloWP
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new Uri("/Views/Doctor/messagesForum.xaml", UriKind.Relative));
         }
     }
 }

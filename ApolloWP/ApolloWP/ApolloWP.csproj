@@ -234,6 +234,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\avatarRunner\avatarImg.png" />
     <Content Include="Assets\avatarRunner\general_Icon\calories_icon.png" />
     <Content Include="Assets\avatarRunner\general_Icon\distance_icon.png" />
     <Content Include="Assets\avatarRunner\general_Icon\duration_icon.png" />

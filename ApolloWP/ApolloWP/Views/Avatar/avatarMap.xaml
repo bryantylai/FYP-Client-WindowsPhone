@@ -29,23 +29,16 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
                 <RowDefinition Height="5*" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="1.2*" />
             </Grid.RowDefinitions>
-
-            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Duration" FontSize="30" />
-                <TextBlock Text="1:21:41" FontSize="70" />
-            </StackPanel>
             
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="0">
                 
             </Grid>
                 
             <Grid Grid.Row="2">
-                <Button Content="Stop" />
-                <Button Content="Start" Background="Orange" BorderBrush="Orange" />
+                <Button Margin="10" Content="Start" Background="Orange" BorderBrush="Orange" />
             </Grid>
         </Grid>
     </Grid>
