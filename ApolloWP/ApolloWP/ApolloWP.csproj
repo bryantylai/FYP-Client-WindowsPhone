@@ -105,6 +105,7 @@
     <Compile Include="Data\Form\LoginForm.cs" />
     <Compile Include="Data\Form\ProfileForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />
+    <Compile Include="Data\Form\RunForm.cs" />
     <Compile Include="Data\Item\AvatarHistoryItem.cs" />
     <Compile Include="Data\Item\AvatarProfileItem.cs" />
     <Compile Include="Data\Item\DiscussionItem.cs" />

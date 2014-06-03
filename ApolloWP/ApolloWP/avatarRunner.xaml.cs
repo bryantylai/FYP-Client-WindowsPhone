@@ -78,7 +78,7 @@ namespace ApolloWP
                     Name = result.Name,
                     Level = result.Level,
                     Experience = result.Experience,
-                    Distance = result.Distance,
+                    Distance = result.Distance / 1000,
                     Duration = new TimeSpan(result.Duration)
                 });
 

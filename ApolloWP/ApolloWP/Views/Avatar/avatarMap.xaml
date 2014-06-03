@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -34,11 +35,25 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                
+                <maps:Map x:Name="mapView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="437" Width="436"/>
+                <StackPanel VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Time : "  FontSize="22"/>
+                        <TextBlock x:Name="timeLabel" FontSize="22"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Distance : " FontSize="22"/>
+                        <TextBlock x:Name="distanceLabel" FontSize="22"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Speed : " FontSize="22"/>
+                        <TextBlock x:Name="speedLabel" FontSize="22"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
                 
             <Grid Grid.Row="2">
-                <Button Margin="10" Content="Start" Background="Orange" BorderBrush="Orange" />
+                <Button x:Name="EndButton" Margin="10" Content="End" Background="Orange" BorderBrush="Orange" Click="EndButton_Click" />
             </Grid>
         </Grid>
     </Grid>

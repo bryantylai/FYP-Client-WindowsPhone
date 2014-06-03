@@ -16,4 +16,10 @@ namespace ApolloWP.Data.Item
     {
         public bool NewAccount { get; set; }
     }
+
+    public class RunMessage : ServerMessage
+    {
+        public long Duration { get; set; }
+        public AvatarProfileItem Avatar { get; set; }
+    }
 }
