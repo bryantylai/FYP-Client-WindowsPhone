@@ -121,7 +121,8 @@ namespace ApolloWP
 
         private void DiscussionListBox_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-
+            DiscussionListBoxItem item = (sender as ListBox).SelectedItem as DiscussionListBoxItem;
+            this.NavigationService.Navigate(new Uri("/Views/Doctor/messagesForum.xaml?discussionId=" + item.DiscussionId.ToString(), UriKind.Relative));
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

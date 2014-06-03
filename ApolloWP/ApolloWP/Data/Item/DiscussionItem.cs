@@ -28,4 +28,16 @@ namespace ApolloWP.Data.Item
         public TimeSpan ActiveTime { get; set; }
         public DateTime ActiveDate { get; set; }
     }
+
+    public class DiscussionDetailedItem : DiscussionItem
+    {
+        public IEnumerable<ReplyItem> Replies { get; set; }
+    }
+
+    public class ReplyItem
+    {
+        public string ResponderName { get; set; }
+        public string Content { get; set; }
+        public long RepliedAt { get; set; }
+    }
 }

@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Data\Avatar.cs" />
     <Compile Include="Data\Form\AuthForm.cs" />
+    <Compile Include="Data\Form\DiscussionForm.cs" />
     <Compile Include="Data\Form\LoginForm.cs" />
     <Compile Include="Data\Form\ProfileForm.cs" />
     <Compile Include="Data\Form\RegistrationForm.cs" />

@@ -48,15 +48,19 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     
-                    <TextBox Text="Title (Tap Here for Edit)" FontSize="40" Margin="-15 0 -15 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" />
+                    <TextBox x:Name="TitleTextBlock" Text="Title (Tap Here for Edit)" FontSize="40" Margin="-15 0 -15 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" Tap="TitleTextBlock_Tap" />
                     <StackPanel Grid.Row="1" Margin="0 20 0 0">
                         <TextBlock Text="Content" FontSize="30" />
+                        <ScrollViewer>
+                            <StackPanel x:Name="ContentStackPanel">
+                            </StackPanel>
+                        </ScrollViewer>
                     </StackPanel>
                 </Grid>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <TextBox Width="300" Height="150" VerticalAlignment="Bottom" Margin="5 0 0 0" />
-                    <Button Width="150" Background="Orange" BorderBrush="Orange" Margin="0 -12 0 0" Content="Send" />
+                    <TextBox x:Name="ContentTextBox" Width="300" Height="150" VerticalAlignment="Bottom" Margin="5 0 0 0" />
+                    <Button x:Name="SendButton" Width="150" Background="Orange" BorderBrush="Orange" Margin="0 -12 0 0" Content="Send" Click="SendButton_Click" />
                 </StackPanel>
             </Grid>
         </Grid>
