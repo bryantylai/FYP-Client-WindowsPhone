@@ -15,6 +15,7 @@ using System.IO;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.Windows.Media.Imaging;
+using Amazon.Runtime;
 
 namespace ApolloWP.Views.Setting
 {
@@ -41,8 +42,8 @@ namespace ApolloWP.Views.Setting
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            
-            GlobalData.GetAppData();
+
+            //GlobalData.GetAppData();
             if (!this.NavigationContext.QueryString.ContainsKey("new"))
             {
                 User user = GlobalData.GetUser();
@@ -115,31 +116,37 @@ namespace ApolloWP.Views.Setting
 
         async void ProfileImage_Completed(object sender, PhotoResult e)
         {
-            if (e.TaskResult == TaskResult.OK)
+            try
             {
                 if (e.TaskResult == TaskResult.OK)
                 {
-                    // Create a client
-                    AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
-
-                    // Create a PutObject request
-                    PutObjectRequest request = new PutObjectRequest
+                    if (e.TaskResult == TaskResult.OK)
                     {
-                        BucketName = "apollo-fyp",
-                        Key = GlobalData.GetUser().Id + "/" + "ProfileImage.png",
-                        ContentType = "image/png",
-                        CannedACL = S3CannedACL.PublicRead
-                    };
-                    ProfileImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "ProfileImage.png";
-                    BitmapImage img = new BitmapImage();
-                    img.SetSource(e.ChosenPhoto);
-                    ProfileImage.Source = img;
+                        // Create a client
+                        AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
 
-                    request.InputStream = e.ChosenPhoto;
+                        // Create a PutObject request
+                        PutObjectRequest request = new PutObjectRequest
+                        {
+                            BucketName = "apollo-fyp",
+                            Key = GlobalData.GetUser().Id + "/" + "ProfileImage.png",
+                            ContentType = "image/png",
+                            CannedACL = S3CannedACL.PublicRead
+                        };
+                        ProfileImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "ProfileImage.png";
+                        BitmapImage img = new BitmapImage();
+                        img.SetSource(e.ChosenPhoto);
+                        ProfileImage.Source = img;
 
-                    // Put object
-                    PutObjectResponse response = await client.PutObjectAsync(request);
+                        request.InputStream = e.ChosenPhoto;
+
+                        // Put object
+                        PutObjectResponse response = await client.PutObjectAsync(request);
+                    }
                 }
+            }
+            catch (AmazonServiceException ex)
+            {
             }
         }
 
@@ -153,28 +160,34 @@ namespace ApolloWP.Views.Setting
 
         async void CoverImage_Completed(object sender, PhotoResult e)
         {
-            if (e.TaskResult == TaskResult.OK)
+            try
             {
-                // Create a client
-                AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
-
-                // Create a PutObject request
-                PutObjectRequest request = new PutObjectRequest
+                if (e.TaskResult == TaskResult.OK)
                 {
-                    BucketName = "apollo-fyp",
-                    Key = GlobalData.GetUser().Id + "/" + "CoverImage.png",
-                    ContentType = "image/png",
-                    CannedACL = S3CannedACL.PublicRead
-                };
-                CoverImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "CoverImage.png";
-                BitmapImage img = new BitmapImage();
-                img.SetSource(e.ChosenPhoto);
-                CoverImage.Source = img;
+                    // Create a client
+                    AmazonS3Client client = new AmazonS3Client(AmazonKeys.AccessKey, AmazonKeys.SecretKey, Amazon.RegionEndpoint.APSoutheast1);
 
-                request.InputStream = e.ChosenPhoto;
+                    // Create a PutObject request
+                    PutObjectRequest request = new PutObjectRequest
+                    {
+                        BucketName = "apollo-fyp",
+                        Key = GlobalData.GetUser().Id + "/" + "CoverImage.png",
+                        ContentType = "image/png",
+                        CannedACL = S3CannedACL.PublicRead
+                    };
+                    CoverImagePath = "https://s3-ap-southeast-1.amazonaws.com/apollo-fyp/" + GlobalData.GetUser().Id + "/" + "CoverImage.png";
+                    BitmapImage img = new BitmapImage();
+                    img.SetSource(e.ChosenPhoto);
+                    CoverImage.Source = img;
 
-                // Put object
-                PutObjectResponse response = await client.PutObjectAsync(request);
+                    request.InputStream = e.ChosenPhoto;
+
+                    // Put object
+                    PutObjectResponse response = await client.PutObjectAsync(request);
+                }
+            }
+            catch (AmazonServiceException ex)
+            {
             }
         }
 

@@ -51,6 +51,7 @@ namespace ApolloWP
 
         void signoutButton_Click(object sender, EventArgs e)
         {
+            GlobalData.RemoveCredentials();
             this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 
@@ -96,8 +97,8 @@ namespace ApolloWP
                             CreatorName = item.CreatorName,
                             DiscussionId = item.DiscussionId,
                             ReplyCount = item.ReplyCount,
-                            ActiveDate = date.Date,
-                            ActiveTime = date.TimeOfDay
+                            ActiveDate = date.Day + "/" + date.Month + "/" + date.Year,
+                            ActiveTime = date.TimeOfDay.Hours + ":" + date.TimeOfDay.Minutes
                         });
                     }
 

@@ -11,8 +11,8 @@ namespace ApolloWP.Data
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
-        public double Experience { get; set; }
-        public TimeSpan Duration { get; set; }
+        public string Experience { get; set; }
+        public string Duration { get; set; }
         public double Distance { get; set; }
     }
 }

@@ -19,4 +19,11 @@ namespace ApolloWP.Data.Item
         public double Distance { get; set; }
         public long Duration { get; set; }
     }
+
+    public class RunDisplayItem
+    {
+        public string RunDate { get; set; }
+        public double Distance { get; set; }
+        public string Duration { get; set; }
+    }
 }

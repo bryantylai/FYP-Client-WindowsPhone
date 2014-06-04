@@ -25,8 +25,8 @@ namespace ApolloWP.Data.Item
         public string Title { get; set; }
         public string CreatorName { get; set; }
         public int ReplyCount { get; set; }
-        public TimeSpan ActiveTime { get; set; }
-        public DateTime ActiveDate { get; set; }
+        public string ActiveTime { get; set; }
+        public string ActiveDate { get; set; }
     }
 
     public class DiscussionDetailedItem : DiscussionItem

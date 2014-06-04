@@ -77,7 +77,7 @@
                                                 <Run Text="{Binding Name}" />
                                             </TextBlock>
                                             <TextBlock Text="{Binding Expertise}" />
-                                            <TextBlock Text="{Binding CenterName}" />
+                                            <TextBlock Text="{Binding LocationName}" />
                                         </StackPanel>
 
                                         <Image Grid.Column="2" Width="80" Source="/Assets/doctorConsult/general/call.png" HorizontalAlignment="Right" />

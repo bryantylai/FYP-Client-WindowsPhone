@@ -58,6 +58,7 @@ namespace ApolloWP
 
         void signoutButton_Click(object sender, EventArgs e)
         {
+            GlobalData.RemoveCredentials();
             this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 

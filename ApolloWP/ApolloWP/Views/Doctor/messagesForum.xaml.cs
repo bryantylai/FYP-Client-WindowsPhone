@@ -64,10 +64,10 @@ namespace ApolloWP.Views.Doctor
                         {
                             MessageBox.Show(result.Message);
                         }
-                        else
-                        {
-                            ContentStackPanel.Children.Add(new TextBlock() { Text = content });
-                        }
+                        //else
+                        //{
+                        //    ContentStackPanel.Children.Add(new TextBlock() { Text = content });
+                        //}
                     });
             }
             // New
@@ -79,12 +79,14 @@ namespace ApolloWP.Views.Doctor
                     {
                         MessageBox.Show(result.Message);
                     }
-                    else
-                    {
-                        ContentStackPanel.Children.Add(new TextBlock() { Text = content });
-                    }
+                    //else
+                    //{
+                    //    ContentStackPanel.Children.Add(new TextBlock() { Text = content });
+                    //}
                 });
             }
+
+            NavigationService.GoBack();
         }
 
         private void TitleTextBlock_Tap(object sender, System.Windows.Input.GestureEventArgs e)

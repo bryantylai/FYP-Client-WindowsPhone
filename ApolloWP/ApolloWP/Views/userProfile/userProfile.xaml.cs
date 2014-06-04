@@ -31,10 +31,10 @@ namespace ApolloWP.Views.userProfile
             this.ApplicationBar.MenuItems.Add(settingButton);
             this.ApplicationBar.MenuItems.Add(signoutButton);
 
-            User user = GlobalData.GetUser();
-            FirstName.Text = user.FirstName;
-            LastName.Text = user.LastName;
-            AboutMe.Text = user.AboutMe;
+            //User user = GlobalData.GetUser();
+            //FirstName.Text = user.FirstName;
+            //LastName.Text = user.LastName;
+            //AboutMe.Text = user.AboutMe;
         }
 
         void avatarButton_Click(object sender, EventArgs e)
@@ -54,6 +54,7 @@ namespace ApolloWP.Views.userProfile
 
         void signoutButton_Click(object sender, EventArgs e)
         {
+            GlobalData.RemoveCredentials();
             this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 

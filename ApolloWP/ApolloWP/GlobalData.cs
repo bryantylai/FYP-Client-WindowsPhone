@@ -17,7 +17,7 @@ namespace ApolloWP
         private static User User;
         private static Avatar Avatar;
         private static IEnumerable<LeaderboardItem> Leaderboard;
-        private static Dictionary<string, IEnumerable<RunItem>> History;
+        private static Dictionary<string, IEnumerable<RunDisplayItem>> History;
         public static PasswordCredential GetCredentials() { return Credential; }
         public static User GetUser() { return User; }
         public static void SetUser(User user) { User = user; }
@@ -25,13 +25,13 @@ namespace ApolloWP
         public static void SetAvatar(Avatar avatar) { Avatar = avatar; }
         public static IEnumerable<LeaderboardItem> GetLeaderboard() { return Leaderboard; }
         public static void SetLeaderboard(IEnumerable<LeaderboardItem> leaderboard) { Leaderboard = leaderboard; }
-        public static IEnumerable<RunItem> GetHistory(string key)
+        public static IEnumerable<RunDisplayItem> GetHistory(string key)
         {
-            IEnumerable<RunItem> runs;
+            IEnumerable<RunDisplayItem> runs;
             History.TryGetValue(key, out runs);
             return runs;
         }
-        public static void SetHistory(Dictionary<string, IEnumerable<RunItem>> history) { History = history; }
+        public static void SetHistory(Dictionary<string, IEnumerable<RunDisplayItem>> history) { History = history; }
 
         public static void InitCredential()
         {
@@ -48,11 +48,18 @@ namespace ApolloWP
             }            
         }
 
+        public static void RemoveCredentials()
+        {
+            PasswordVault vault = new PasswordVault();
+            IEnumerable<PasswordCredential> credentials = vault.RetrieveAll();      
+            foreach (PasswordCredential credential in credentials) { vault.Remove(credential); }    
+        }
+
         public static void SaveCredential(string username, string password)
         {
             PasswordVault vault = new PasswordVault();
             IEnumerable<PasswordCredential> credentials = vault.RetrieveAll();
-            foreach (PasswordCredential credential in credentials) { vault.Remove(credential); }            
+            foreach (PasswordCredential credential in credentials) { vault.Remove(credential); }        
             Credential = new PasswordCredential("Credentials", username, password);
             vault.Add(Credential);
         }
@@ -85,20 +92,98 @@ namespace ApolloWP
                 {
                     Name = result.Name,
                     Level = result.Level,
-                    Experience = result.Experience,
-                    Distance = result.Distance,
-                    Duration = new TimeSpan(result.Duration)
+                    Experience = result.Experience * 100 + "%",
+                    Distance = Math.Round(result.Distance / 1000, 2),
+                    Duration = TimeSpan.FromTicks(result.Duration).Hours + ":" + TimeSpan.FromTicks(result.Duration).Minutes
                 };
             });
 
             RestClient historyClient = new RestClient();
             historyClient.Get<AvatarHistoryItem>("https://apollo-ws.azurewebsites.net/api/avatar/windows/history", GlobalData.GetCredentials(), (result) =>
             {
-                History = new Dictionary<string, IEnumerable<RunItem>>();
-                History.Add("Day", result.Day);
-                History.Add("Week", result.Week);
-                History.Add("Month", result.Month);
-                History.Add("Year", result.Year);
+                HashSet<RunDisplayItem> dayRunItems = new HashSet<RunDisplayItem>();
+                foreach (RunItem runItem in result.Day)
+                {
+                    TimeSpan time = TimeSpan.FromTicks(runItem.Duration);
+                    string hours = "";
+                    string minutes = "";
+                    if (time.Hours < 10) { hours = "0"; }
+                    if (time.Minutes < 10) { minutes = "0"; }
+
+                    hours += time.Hours;
+                    minutes += time.Minutes;
+
+                    RunDisplayItem runDisplayItem = new RunDisplayItem();
+                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
+                    runDisplayItem.Duration = hours + ":" + minutes;
+
+                    dayRunItems.Add(runDisplayItem);
+                }
+                History.Add("Day", dayRunItems);
+
+                HashSet<RunDisplayItem> weekRunItems = new HashSet<RunDisplayItem>();
+                foreach (RunItem runItem in result.Week)
+                {
+                    TimeSpan time = TimeSpan.FromTicks(runItem.Duration);
+                    string hours = "";
+                    string minutes = "";
+                    if (time.Hours < 10) { hours = "0"; }
+                    if (time.Minutes < 10) { minutes = "0"; }
+
+                    hours += time.Hours;
+                    minutes += time.Minutes;
+
+                    RunDisplayItem runDisplayItem = new RunDisplayItem();
+                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
+                    runDisplayItem.Duration = hours + ":" + minutes;
+
+                    weekRunItems.Add(runDisplayItem);
+                }
+                History.Add("Week", weekRunItems);
+
+                HashSet<RunDisplayItem> monthRunItems = new HashSet<RunDisplayItem>();
+                foreach (RunItem runItem in result.Month)
+                {
+                    TimeSpan time = TimeSpan.FromTicks(runItem.Duration);
+                    string hours = "";
+                    string minutes = "";
+                    if (time.Hours < 10) { hours = "0"; }
+                    if (time.Minutes < 10) { minutes = "0"; }
+
+                    hours += time.Hours;
+                    minutes += time.Minutes;
+
+                    RunDisplayItem runDisplayItem = new RunDisplayItem();
+                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
+                    runDisplayItem.Duration = hours + ":" + minutes;
+
+                    monthRunItems.Add(runDisplayItem);
+                }
+                History.Add("Month", monthRunItems);
+
+                HashSet<RunDisplayItem> yearRunItems = new HashSet<RunDisplayItem>();
+                foreach (RunItem runItem in result.Year)
+                {
+                    TimeSpan time = TimeSpan.FromTicks(runItem.Duration);
+                    string hours = "";
+                    string minutes = "";
+                    if (time.Hours < 10) { hours = "0"; }
+                    if (time.Minutes < 10) { minutes = "0"; }
+
+                    hours += time.Hours;
+                    minutes += time.Minutes;
+
+                    RunDisplayItem runDisplayItem = new RunDisplayItem();
+                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
+                    runDisplayItem.Duration = hours + ":" + minutes;
+
+                    yearRunItems.Add(runDisplayItem);
+                }
+                History.Add("Year", yearRunItems);
             });
 
             RestClient leaderboardClient = new RestClient();
