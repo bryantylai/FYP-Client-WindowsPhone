@@ -45,8 +45,8 @@
                             <ColumnDefinition Width="8*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Height="70" />
-                        <Image Grid.Column="1" Width="50" Source="/Assets/doctorConsult/general/searchIcon.png" />
+                        <TextBox x:Name="SearchTextBox" Grid.Column="0" Height="70" />
+                        <Image Grid.Column="1" Width="50" Source="/Assets/doctorConsult/general/searchIcon.png" Tap="SearchButton_Tap" />
                     </Grid>
 
                     <Grid Grid.Row="1" Height="500">

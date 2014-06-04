@@ -6,6 +6,7 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using ApolloWP.Data.Form;
 using ApolloWP.Data.Item;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -129,6 +130,15 @@ namespace ApolloWP
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/Views/Doctor/messagesForum.xaml", UriKind.Relative));
+        }
+
+        private void SearchButton_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            RestClient doctorClient = new RestClient();
+            doctorClient.Post<IEnumerable<DoctorItem>>("https://apollo-ws.azurewebsites.net/api/doctor/fetch-all", new DoctorFilterForm() { Expertise = SearchTextBox.Text }, GlobalData.GetCredentials(), (result) =>
+            {
+                DoctorListBox.ItemsSource = result;
+            });
         }
     }
 }
