@@ -189,7 +189,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <StackPanel>
+                                        <StackPanel Margin="15 0 0 0">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1.4*" />
@@ -252,7 +252,7 @@
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Height="auto" Grid.Column="0" Text="Top Ten Player" FontSize="26" Padding="20 0 0 0" VerticalAlignment="Center" />
+                        <TextBlock Height="auto" Grid.Column="0" Text="Top Players" FontSize="26" Padding="20 0 0 0" VerticalAlignment="Center" />
                     </Grid>
 
                     <!-- Remove it when doing listbox -->
@@ -279,7 +279,7 @@
                     <ListBox x:Name="LeaderboardListBox" Grid.Row="1" Grid.Column="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="420">
+                                <Grid Width="420" Margin="0 5 0 5">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.3*" />
                                         <ColumnDefinition Width="auto" />
@@ -293,12 +293,15 @@
                                     </Grid.RowDefinitions>
 
                                     <!--<TextBlock Grid.Column="0" Grid.RowSpan="2" Text="1" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" />-->
-                                    <Image Grid.Column="1" Grid.RowSpan="2" Width="50" Height="50" Source="{Binding PlayerProfileImage}" />
+                                    <Image Grid.Column="1" Grid.RowSpan="2" Width="50" Height="50" Source="{Binding PlayerProfileImage}" Stretch="Fill" />
                                     <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding PlayerName}" FontSize="20" Padding="20 5 0 0" VerticalAlignment="Center" />
                                     <!--<TextBlock Grid.Column="2" Grid.Row="1" FontSize="15" Padding="20 0 0 0" VerticalAlignment="Top">
                                         <Run Text="Level" />
                                     </TextBlock>-->
-                                    <TextBlock Grid.Column="3" Grid.RowSpan="2" Text="{Binding Point}" FontSize="20" Margin="0 0 15 0" TextAlignment="Right" VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="3" Grid.RowSpan="2" FontSize="20" Margin="0 0 15 0" TextAlignment="Right" VerticalAlignment="Center">
+                                        <Run Text="{Binding Point}" />
+                                        <Run Text=" pts" />
+                                    </TextBlock>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

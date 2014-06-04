@@ -119,8 +119,8 @@
                                     </Grid.RowDefinitions>
 
                                     <StackPanel Grid.Column="0" Grid.Row="0" Margin="15 0 0 0">
-                                        <TextBlock Text="{Binding CreatorName}" FontSize="35" />
-                                        <TextBlock Text="{Binding Title}" />
+                                        <!--<TextBlock Text="{Binding CreatorName}" FontSize="35" />-->
+                                        <TextBlock Text="{Binding Title}" FontSize="30" />
                                         <TextBlock>
                                             <Run Text="No. of Replies :" />
                                             <Run Text="{Binding ReplyCount}" />

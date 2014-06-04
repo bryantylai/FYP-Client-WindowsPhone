@@ -36,13 +36,14 @@ namespace ApolloWP.Views.Avatar
 
             timer.Start();
             watcher.Start();
-            timeStarted = DateTime.Now.Ticks;
+            timeStarted = DateTime.UtcNow.Ticks;
             startTime = Environment.TickCount;
 
             line = new MapPolyline();
             line.StrokeColor = Colors.Red;
             line.StrokeThickness = 5;
             mapView.MapElements.Add(line);
+            mapView.ZoomLevel = 19.0;
 
             watcher.PositionChanged += watcher_PositionChanged;
         }
@@ -95,7 +96,7 @@ namespace ApolloWP.Views.Avatar
             RunForm runForm = new RunForm()
             {
                 StartTime = timeStarted,
-                EndTime = DateTime.Now.Ticks,
+                EndTime = DateTime.UtcNow.Ticks,
                 Distance = kilometres * 1000
             };
 

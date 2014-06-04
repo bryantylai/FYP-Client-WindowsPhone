@@ -48,9 +48,8 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     
-                    <TextBox x:Name="TitleTextBlock" Text="Title (Tap Here for Edit)" FontSize="40" Margin="-15 0 -15 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" Tap="TitleTextBlock_Tap" />
+                    <TextBox x:Name="TitleTextBlock" Text="Title (Tap Here for Edit)" FontSize="40" Margin="-15 0 -15 0" Foreground="SkyBlue" Background="Transparent" BorderBrush="Transparent" Tap="TitleTextBlock_Tap" />
                     <StackPanel Grid.Row="1" Margin="0 20 0 0">
-                        <TextBlock Text="Content" FontSize="30" />
                         <ScrollViewer>
                             <StackPanel x:Name="ContentStackPanel">
                             </StackPanel>

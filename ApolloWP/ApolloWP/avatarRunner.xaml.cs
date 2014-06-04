@@ -112,8 +112,10 @@ namespace ApolloWP
                     hours += time.Hours;
                     minutes += time.Minutes;
 
+                    DateTime runDate = new DateTime(runItem.RunDate);
+
                     RunDisplayItem runDisplayItem = new RunDisplayItem();
-                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.RunDate = runDate.Day + "/" + runDate.Month;
                     runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
                     runDisplayItem.Duration = hours + ":" + minutes;
 
@@ -133,8 +135,10 @@ namespace ApolloWP
                     hours += time.Hours;
                     minutes += time.Minutes;
 
+                    DateTime runDate = new DateTime(runItem.RunDate);
+
                     RunDisplayItem runDisplayItem = new RunDisplayItem();
-                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.RunDate = runDate.Day + "/" + runDate.Month;
                     runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
                     runDisplayItem.Duration = hours + ":" + minutes;
 
@@ -154,8 +158,10 @@ namespace ApolloWP
                     hours += time.Hours;
                     minutes += time.Minutes;
 
+                    DateTime runDate = new DateTime(runItem.RunDate);
+
                     RunDisplayItem runDisplayItem = new RunDisplayItem();
-                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.RunDate = runDate.Day + "/" + runDate.Month;
                     runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
                     runDisplayItem.Duration = hours + ":" + minutes;
 
@@ -175,8 +181,10 @@ namespace ApolloWP
                     hours += time.Hours;
                     minutes += time.Minutes;
 
+                    DateTime runDate = new DateTime(runItem.RunDate);
+
                     RunDisplayItem runDisplayItem = new RunDisplayItem();
-                    runDisplayItem.RunDate = new DateTime(runItem.RunDate).Date.ToString();
+                    runDisplayItem.RunDate = runDate.Day + "/" + runDate.Month;
                     runDisplayItem.Distance = Math.Round(runItem.Distance / 1000, 2);
                     runDisplayItem.Duration = hours + ":" + minutes;
 

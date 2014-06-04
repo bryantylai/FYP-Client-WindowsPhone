@@ -35,7 +35,7 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <maps:Map x:Name="mapView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="437" Width="436"/>
+                <maps:Map x:Name="mapView" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="437" Width="436" />
                 <StackPanel VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Time : "  FontSize="22"/>
